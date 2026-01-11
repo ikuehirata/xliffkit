@@ -1,0 +1,319 @@
+"""Sentence-based TU splitting utilities (spec-compliant).
+
+This module implements splitting according to the project specification
+(`xliffkit/docs/specs/segment_split.md`). It is sentence-based,
+language-agnostic and conservative: it preserves inline tags,
+treats structural token spans (e.g. <br>/newline tokens) as independent
+segments, and does not embed split metadata into the XLIFF.
+"""
+
+from __future__ import annotations
+
+import re
+import uuid
+from typing import Pattern
+
+from ..core.models import TU, InlineTag, Segment, XliffDocument
+from ..normalize.flatten import TOKEN_CLOSE, TOKEN_OPEN
+
+
+def _default_trigger() -> Pattern[str]:
+    return re.compile(r'\.\s+')
+
+
+def split_tu(
+        tu: TU,
+        release_new_context_id: bool = True,
+        trigger: Pattern[str] | str | None = None,
+    ) -> list[TU]:
+    """Split a single ``TU`` into multiple ``TU``s.
+
+    The process is carried out in the following stages:
+    1. Normalize the flatten text (``normalize_flatten``)
+    2. Detect split points (``detect_split_points``)
+    3. Split the flatten text into chunks (``split_flatten``)
+    4. Reconstruct new TUs from each chunk (``reconstruct_tu_from_chunk``)
+    """
+    if trigger is None:
+        pattern = _default_trigger()
+    elif isinstance(trigger, str):
+        pattern = re.compile(trigger)
+    else:
+        pattern = trigger
+
+    # context_id の決定
+    org_context_id = tu.context_id
+    if release_new_context_id:
+        parent_context_id = str(uuid.uuid4())
+    else:
+        parent_context_id = org_context_id or str(uuid.uuid4())
+
+    flat = tu.source.flattened_text or ''
+    if not flat:
+        # 空テキストはそのまま返す
+        new_tu = TU(
+            tu_id='',
+            source=tu.source.with_text(tu.source.text),
+            target=(tu.target.with_text(tu.target.text) if tu.target is not None else None),
+            context_id=parent_context_id,
+            raw_xml=tu.raw_xml,
+        )
+        return [new_tu]
+
+    # 1. 正規化
+    norm = normalize_flatten(flat)
+
+    # 1.5 構造的分割: 改行/BR系タグで先に分割する
+    structural_chunks = split_by_structural_tags(norm, tu.source.inline_tags or [])
+
+    # 2. 各構造チャンクに対して文分割をかける
+    result_chunks: list[str] = []
+    for sch in structural_chunks:
+        result_chunks.extend(split_by_sentence_rules(sch, pattern))
+
+    # 3. 各チャンクから新 TU を再構築
+    parts: list[TU] = []
+    for idx, chunk in enumerate(result_chunks):
+        new_tu = reconstruct_tu_from_chunk(tu, chunk, parent_context_id, is_first=(idx == 0))
+        parts.append(new_tu)
+
+    if not parts:
+        return [tu]
+
+    return parts
+
+
+def normalize_flatten(flat: str) -> str:
+    """Normalize flatten text while preserving token regions.
+
+    Replace consecutive whitespace with a single space and trim leading/trailing whitespace,
+    but do not modify token regions enclosed by TOKEN_OPEN/TOKEN_CLOSE.
+    """
+    parts = flat.split(TOKEN_OPEN)
+    out_parts: list[str] = []
+    for i, p in enumerate(parts):
+        if i == 0:
+            out_parts.append(re.sub(r'\s+', ' ', p).strip())
+            continue
+        if TOKEN_CLOSE in p:
+            token_content, rest = p.split(TOKEN_CLOSE, 1)
+            out_parts.append(TOKEN_OPEN + token_content + TOKEN_CLOSE + re.sub(r'\s+', ' ', rest))
+        else:
+            out_parts.append(TOKEN_OPEN + p)
+    return ''.join(out_parts)
+
+
+def split_by_structural_tags(flat: str, inline_tags: list[InlineTag]) -> list[str]:
+    """Split `flat` at structural (newline/br) tag tokens.
+
+    Check the specified `inline_tags` for tag IDs whose
+    `raw_inner` contains newlines or `<br>` equivalents, and split at those token positions.
+    """
+    # special tag ids
+    special_ids = {
+        t.tag_id for t in (inline_tags or [])
+        if t.raw_inner and (
+            '\n' in t.raw_inner or '&lt;br' in t.raw_inner.lower())
+        and t.tag_id is not None}
+    if not special_ids:
+        return [flat]
+
+    # special_ids に対応するトークン表現だけを検索し、その前後で分割する
+    special_tokens = [TOKEN_OPEN + tid + TOKEN_CLOSE for tid in special_ids]
+    positions: list[tuple[int, int]] = []
+    for tok in special_tokens:
+        start_idx = 0
+        while True:
+            idx = flat.find(tok, start_idx)
+            if idx == -1:
+                break
+            positions.append((idx, idx + len(tok)))
+            start_idx = idx + len(tok)
+
+    positions.sort()
+    chunks: list[str] = []
+    prev = 0
+    for start, end in positions:
+        if prev < start:
+            chunks.append(flat[prev:start])
+        # structural token を独立チャンクとして追加
+        chunks.append(flat[start:end])
+        prev = end
+    if prev < len(flat):
+        chunks.append(flat[prev:])
+
+    # normalize chunks (strip and drop empty)
+    return [c.strip() for c in chunks if c.strip() != '']
+
+
+def split_by_sentence_rules(chunk: str, pattern: Pattern[str]) -> list[str]:
+    """Apply sentence-splitting rules to a chunk and return sentence chunks."""
+    points = detect_split_points(chunk, pattern)
+    return split_flatten(chunk, points)
+
+
+def detect_split_points(flat: str, pattern: Pattern[str]) -> list[int]:
+    """Detect split points (end offsets) that are not inside token regions."""
+    points: list[int] = []
+    for m in pattern.finditer(flat):
+        end = m.end()
+        # トークン内部かどうかを判定（end までの TOKEN_OPEN/CLOSE の数を比較）
+        opens = flat.count(TOKEN_OPEN, 0, end)
+        closes = flat.count(TOKEN_CLOSE, 0, end)
+        if opens == closes:
+            points.append(end)
+    return points
+
+
+def split_flatten(flat: str, points: list[int]) -> list[str]:
+    """Split flattened text into chunks using end-offset points."""
+    if not points:
+        return [flat]
+    chunks: list[str] = []
+    prev = 0
+    for p in points:
+        chunks.append(flat[prev:p])
+        prev = p
+    if prev < len(flat):
+        chunks.append(flat[prev:])
+    # strip each chunk
+    return [c for c in (c.strip() for c in chunks) if c != '']
+
+
+def reconstruct_segment_from_chunk(
+        original_tags: list[InlineTag], original_lang: str, flat: str) -> Segment:
+    """Reconstruct a Segment from a chunk of normalized flatten text."""
+    # チャンクを左から走査して new_text と tag_id -> position の写像を作る
+    i = 0  # index in chunk
+    j = 0  # index in new_text
+    new_chars: list[str] = []
+    tag_positions: dict[str, int] = {}
+    L = len(flat)
+    while i < L:
+        if flat.startswith(TOKEN_OPEN, i):
+            end_idx = flat.find(TOKEN_CLOSE, i + len(TOKEN_OPEN))
+            if end_idx == -1:
+                # malformed token, treat as literal
+                new_chars.append(flat[i])
+                i += 1
+                j += 1
+                continue
+            tag_id = flat[i + len(TOKEN_OPEN):end_idx]
+            # 記録: 現在の new_text 側インデックスをこの tag_id の位置とする
+            tag_positions[tag_id] = j
+            i = end_idx + len(TOKEN_CLOSE)
+            continue
+        # 通常の文字
+        new_chars.append(flat[i])
+        i += 1
+        j += 1
+
+    # これが新しいタグ無しテキスト
+    new_text = ''.join(new_chars)
+
+    # 新しい inline_tags を作る
+    new_inline: list[InlineTag] = []
+    for tag_id, pos in tag_positions.items():
+        # 元の inline_tags から tag_id に対応するタグを探す
+        inline_tags = original_tags or []
+        matched = None
+        for t in inline_tags:
+            if getattr(t, 'tag_id', None) == tag_id:
+                matched = t
+                break
+        if matched is not None:
+            newt = InlineTag(
+                tag=matched.tag,
+                tag_id=matched.tag_id,
+                raw_inner=matched.raw_inner,
+                tag_rid=matched.tag_rid,
+                position=pos,
+            )
+            new_inline.append(newt)
+
+    new_source = Segment(
+        text=new_text,
+        inline_tags=new_inline,
+        lang=original_lang,
+        raw_xml=None,
+    )
+
+    return new_source
+
+def reconstruct_tu_from_chunk(
+        original: TU,
+        chunk: str,
+        parent_context_id: str,
+        is_first: bool) -> TU:
+    """Reconstruct a TU from a chunk of normalized flatten text.
+
+    - Extract tag tokens (TOKEN_OPEN id TOKEN_CLOSE) contained in the chunk,
+      and select the corresponding tags from the original inline_tags.
+    - Scan the chunk from the left to identify the positions of tag tokens,
+      and set these as the positions of the inline_tags.
+    - Simultaneously create a new text by removing the chunk,
+      resulting in new_text.
+    """
+    # chunk 本体も flattenする
+    flat = normalize_flatten(chunk)
+
+    # ソースセグメントを再構築
+    new_source = reconstruct_segment_from_chunk(
+        original.source.inline_tags or [],
+        original.source.lang or '',
+        flat)
+
+    new_target = None
+    if is_first and original.target is not None:
+        new_target = original.target.with_text(original.target.text)
+
+    new_tu = TU(
+        tu_id='',
+        source=new_source,
+        target=new_target,
+        context_id=parent_context_id,
+        raw_xml=original.raw_xml,
+    )
+    return new_tu
+
+
+def release_new_context_id(tus: list[TU]) -> bool:
+    """Release new context IDs for `tus` in-place."""
+    # context_idが存在しない場合は新規発行する
+    ctx_ids = [(t.context_id, t.tu_id) for t in tus]
+    if any(cid is None for cid, _ in ctx_ids):
+        return True
+    # 全部のcontext idが50文字以上ならそのまま採用
+    if all(cid is not None and len(cid) >= 50 for cid, _ in ctx_ids):
+        return False
+    # 一意でない場合
+    # 各 id の出現回数をカウント（None を除外）
+    counts: dict[str, int] = {}
+    for cid, _ in ctx_ids:
+        if cid is None:
+            continue
+        counts[cid] = counts.get(cid, 0) + 1
+    if any(v > 1 for v in counts.values()):
+        return True
+    return False
+
+
+def split_document(
+        doc: XliffDocument,
+        trigger: Pattern[str] | str | None = None
+    ) -> XliffDocument:
+    """Return a new XliffDocument with `tus` split by sentence."""
+    # 新規context_id 発行の要否を判定
+    release_new_id = release_new_context_id(doc.tus)
+
+    new_tus: list[TU] = []
+    for tu in doc.tus:
+        parts = split_tu(tu, trigger=trigger, release_new_context_id=release_new_id)
+        new_tus.extend(parts)
+
+    # 新規docを作成
+    new_doc = doc.with_tus(new_tus)
+    # tu_id を振り直す
+    new_doc = new_doc.reorder_tu_id()
+
+    return new_doc

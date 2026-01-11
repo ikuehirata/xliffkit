@@ -1,0 +1,998 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:mq="MQXliff" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+<file original="long_text.csv" mq:id="37de539c-58cd-427e-bd22-4e5164435cd2" mq:projectid="9f259c5e-0cac-4806-bc8c-9c99a2d56c30" source-language="en" target-language="ja" datatype="x-MemoQ.DocConverters.MuLiDelimited.MuLiDelimitedConverter">
+<header>
+<tool tool-id="MQ" tool-name="MemoQ" tool-version="11.6.8" tool-company="Kilgray"/>
+<mq:export-path>sample_folder\xliffkit\examples\02_split\long_text_jpn.csv</mq:export-path>
+<mq:docinformation mq:isabstract="isabstract" mq:hashistory="true" mq:docname="long_text.csv" mq:majorversion="1" mq:minorversion="1" mq:nosplitjoin="false" mq:langindepgroupid="77e5d128-8653-453a-ad67-6795e36d435d" mq:multidocgroupid="f127828b-d9d2-48d9-adf0-a98e6f66b6eb" mq:origfile="sample_folder\xliffkit\examples\02_split\long_text.csv" mq:numberofwords="173" mq:filterconfigname="custom" mq:filterconfigserverurl="" mq:changetrackingenabledstates="Off,Off,Off,Off">
+<mq:versioninfos mq:majorversion="1"><mq:minorversioninfo mq:minorversion="0" mq:comment="" mq:createdthroughview="false" mq:createreason="Import" mq:creationtime="570163887" mq:creatoruser="user" mq:tag=""><mq:details mq:type="MinorVersionDetailsImport">&lt;?xml version="1.0"?&gt;
+&lt;MinorVersionDetailsImport xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;FilePath&gt;sample_folder\xliffkit\examples\02_split\long_text.csv&lt;/FilePath&gt;
+&lt;/MinorVersionDetailsImport&gt;</mq:details></mq:minorversioninfo>
+<mq:minorversioninfo mq:minorversion="1" mq:comment="" mq:createdthroughview="false" mq:createreason="BilingualExport" mq:creationtime="570163939" mq:creatoruser="user" mq:tag=""><mq:details mq:type="MinorVersionDetailsBilingExport">&lt;?xml version="1.0"?&gt;
+&lt;MinorVersionDetailsBilingExport xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;BilingualType&gt;Xliff&lt;/BilingualType&gt;
+  &lt;TargetPath&gt;sample_folder\xliffkit\examples\02_split\input.mqxliff&lt;/TargetPath&gt;
+  &lt;TwoColumpRtfProperties&gt;MutipleDocuments&lt;/TwoColumpRtfProperties&gt;
+  &lt;TableDocxProperties&gt;MutipleDocuments&lt;/TableDocxProperties&gt;
+  &lt;BilingRtfProperties&gt;EmptySegmentsWithMarkup&lt;/BilingRtfProperties&gt;
+  &lt;XliffProperties&gt;IncludePreview&lt;/XliffProperties&gt;
+&lt;/MinorVersionDetailsBilingExport&gt;</mq:details></mq:minorversioninfo>
+</mq:versioninfos>
+<mq:tagdefinition alignhighlight="false" caseinsensitive="false" rawhtml="false" showitags="false" basicformat="false" supersubscript="false" xmlcommands="false"><mq:tagdefelement name="mq:ch" placeholder="false" tagrequired="Normal"><mq:tagdefattribute name="val" filtered="true" required="true" translatable="false"/><mq:tagdefattribute name="invalidxmlchar" filtered="true" required="false" translatable="false"/></mq:tagdefelement><mq:tagdefelement name="mq:rxt" placeholder="false" tagrequired="Normal"><mq:tagdefattribute name="displaytext" filtered="true" required="true" translatable="false"/><mq:tagdefattribute name="val" filtered="true" required="true" translatable="false"/><mq:tagdefattribute name="fmt_b" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_i" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_u" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_sup" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_sub" filtered="true" required="false" translatable="false"/></mq:tagdefelement><mq:tagdefelement name="mq:rxt-req" placeholder="true" tagrequired="Required"><mq:tagdefattribute name="displaytext" filtered="true" required="true" translatable="false"/><mq:tagdefattribute name="val" filtered="true" required="true" translatable="false"/><mq:tagdefattribute name="fmt_b" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_i" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_u" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_sup" filtered="true" required="false" translatable="false"/><mq:tagdefattribute name="fmt_sub" filtered="true" required="false" translatable="false"/></mq:tagdefelement></mq:tagdefinition>
+<mq:doccomments/>
+<mq:lqamodel>&lt;XMLSerializedLQAModel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;Version&gt;1&lt;/Version&gt;&lt;Name /&gt;&lt;RevisionID&gt;00000000-0000-0000-0000-000000000000&lt;/RevisionID&gt;&lt;UseSeverityLevels&gt;false&lt;/UseSeverityLevels&gt;&lt;UsePenaltyPoints&gt;false&lt;/UsePenaltyPoints&gt;&lt;RequiresReviewerCommenting&gt;false&lt;/RequiresReviewerCommenting&gt;&lt;SeverityLevelNames /&gt;&lt;ModelEntries /&gt;&lt;PassFailCriterion&gt;&lt;CountMultipleErrorOccuranceAsOne&gt;false&lt;/CountMultipleErrorOccuranceAsOne&gt;&lt;CritDefType&gt;PenaltyPoints&lt;/CritDefType&gt;&lt;PenaltyPointsNominator&gt;0&lt;/PenaltyPointsNominator&gt;&lt;PenaltyPointPerWordsDenominator&gt;0&lt;/PenaltyPointPerWordsDenominator&gt;&lt;NormalizedPenaltyScoreLimit&gt;0&lt;/NormalizedPenaltyScoreLimit&gt;&lt;CritDefinitionRules /&gt;&lt;/PassFailCriterion&gt;&lt;QALQAMapping /&gt;&lt;Timestamp&gt;0001-01-01T00:00:00&lt;/Timestamp&gt;&lt;/XMLSerializedLQAModel&gt;</mq:lqamodel>
+<mq:externalpreviewinfo>
+<mq:previewidsbylabels>
+<mq:previewidbylabel mq:label="0" mq:previewid="mQ-default-19817a56-1930-47a3-a2b6-bb4f53bb9fc2-0"/>
+<mq:previewidbylabel mq:label="1" mq:previewid="mQ-default-19817a56-1930-47a3-a2b6-bb4f53bb9fc2-1"/>
+</mq:previewidsbylabels>
+</mq:externalpreviewinfo>
+</mq:docinformation>
+</header>
+<body>
+<trans-unit id="1" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><bpt id="1" rid="1">&lt;mq:rxt displaytext=&quot;&amp;lt;h2&amp;gt;&quot; val=&quot;&amp;lt;h2&amp;gt;&quot;&gt;</bpt>Key Features of This Function<ept id="2" rid="1">&lt;/mq:rxt displaytext=&quot;&amp;lt;/h2&amp;gt;&quot; val=&quot;&amp;lt;/h2&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="2" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="3" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="4" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><bpt id="5" rid="2">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>In <bpt id="6" rid="3">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>multilingual texts<ept id="7" rid="3">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> such as videogame store descriptions, segment splitting is often <bpt id="8" rid="4">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>disabled in CAT tools<ept id="9" rid="4">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> to preserve cross-language alignment.<ept id="10" rid="2">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="5" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="6" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="12">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="7" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><bpt id="13" rid="5">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>As a result, translators are forced to work with <bpt id="14" rid="6">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>overly long and complex segments<ept id="15" rid="6">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> that mix multiple sentences or ideas.<ept id="16" rid="5">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="8" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="17">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="9" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="18">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="10" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><bpt id="19" rid="7">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>This function allows <bpt id="20" rid="8">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>safe external splitting<ept id="21" rid="8">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> of such segments while keeping the original <bpt id="22" rid="9">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>structural integrity<ept id="23" rid="9">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> required by CAT tools.<ept id="24" rid="7">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="11" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="25">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="12" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="26">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="13" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><bpt id="27" rid="10">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>Each split segment remains <bpt id="28" rid="11">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>traceable to its original context<ept id="29" rid="11">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept>, ensuring that <bpt id="30" rid="12">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>merge operations<ept id="31" rid="12">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> can reliably reconstruct the source file.<ept id="32" rid="10">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="14" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="33">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="15" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><ph id="34">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="16" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0"><bpt id="35" rid="13">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>The feature is designed for scenarios where <bpt id="36" rid="14">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>different languages require different sentence boundaries<ept id="37" rid="14">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept>.<ept id="38" rid="13">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="e2a40a25-12b2-43ab-8e12-12d6d896aff2" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="0" mq:lastlabel="0" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="0" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Key Features of This Function&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;In &lt;b&gt;multilingual texts&lt;/b&gt; such as videogame store descriptions, segment splitting is often &lt;b&gt;disabled in CAT tools&lt;/b&gt; to preserve cross-language alignment.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;As a result, translators are forced to work with &lt;b&gt;overly long and complex segments&lt;/b&gt; that mix multiple sentences or ideas.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This function allows &lt;b&gt;safe external splitting&lt;/b&gt; of such segments while keeping the original &lt;b&gt;structural integrity&lt;/b&gt; required by CAT tools.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;Each split segment remains &lt;b&gt;traceable to its original context&lt;/b&gt;, ensuring that &lt;b&gt;merge operations&lt;/b&gt; can reliably reconstruct the source file.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The feature is designed for scenarios where &lt;b&gt;different languages require different sentence boundaries&lt;/b&gt;.&lt;/p&gt;</source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">e201ee28-143e-4141-8e0f-2814f7d2ec46</context></context-group></trans-unit>
+<trans-unit id="17" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><bpt id="1" rid="1">&lt;mq:rxt displaytext=&quot;&amp;lt;h2&amp;gt;&quot; val=&quot;&amp;lt;h2&amp;gt;&quot;&gt;</bpt>Why External Splitting Is Necessary<ept id="2" rid="1">&lt;/mq:rxt displaytext=&quot;&amp;lt;/h2&amp;gt;&quot; val=&quot;&amp;lt;/h2&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="18" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="19" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="20" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><bpt id="5" rid="2">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>For example, a <bpt id="6" rid="3">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>single English sentence<ept id="7" rid="3">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> may naturally become <bpt id="8" rid="4">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>two sentences<ept id="9" rid="4">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> in Japanese or German.<ept id="10" rid="2">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="21" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="22" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="12">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="23" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><bpt id="13" rid="5">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>By performing the split <bpt id="14" rid="6">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>outside the CAT tool<ept id="15" rid="6">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept>, translators can improve <bpt id="16" rid="7">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>readability and translation quality<ept id="17" rid="7">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> without breaking tool constraints.<ept id="18" rid="5">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="24" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="19">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="25" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="20">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="26" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><bpt id="21" rid="8">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>All <bpt id="22" rid="9">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>inline tags and identifiers<ept id="23" rid="9">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> are preserved during the split process.<ept id="24" rid="8">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="27" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="25">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="28" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="26">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="29" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><bpt id="27" rid="10">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>This ensures that the modified file can be <bpt id="28" rid="11">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>safely re-imported<ept id="29" rid="11">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> into the original CAT environment.<ept id="30" rid="10">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="30" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="31">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="31" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="32">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="32" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><bpt id="33" rid="12">&lt;mq:rxt displaytext=&quot;&amp;lt;p&amp;gt;&quot; val=&quot;&amp;lt;p&amp;gt;&quot;&gt;</bpt>The result is a workflow that balances <bpt id="34" rid="13">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>linguistic freedom<ept id="35" rid="13">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept> with <bpt id="36" rid="14">&lt;mq:rxt displaytext=&quot;&amp;lt;b&amp;gt;&quot; val=&quot;&amp;lt;b&amp;gt;&quot;&gt;</bpt>technical safety<ept id="37" rid="14">&lt;/mq:rxt displaytext=&quot;&amp;lt;/b&amp;gt;&quot; val=&quot;&amp;lt;/b&amp;gt;&quot;&gt;</ept>.<ept id="38" rid="12">&lt;/mq:rxt displaytext=&quot;&amp;lt;/p&amp;gt;&quot; val=&quot;&amp;lt;/p&amp;gt;&quot;&gt;</ept></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+<trans-unit id="33" mq:minorversionend="1" mq:minorversionstart="1" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="2026-01-10T15:20:12Z" mq:lastchanginguser="user" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1"><ph id="39">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:minorversions>
+<mq:historical-unit mq:minorversionend="0" mq:minorversionstart="0" mq:status="NotStarted" mq:segmentguid="59599425-e796-4890-a770-f6c186a4b819" mq:lastchangedtimestamp="0001-01-01T00:00:00Z" mq:maxlengthchars="-1" mq:nosplitjoin="true" mq:firstlabel="1" mq:lastlabel="1" mq:autosplitjoinstate="0" mq:lastmodifrole="0" mq:multipleexactmatch="false">
+<source xml:space="preserve" mq:segpart="1" mq:hasfollowingobject="hasfollowingobject">&lt;h2&gt;Why External Splitting Is Necessary&lt;/h2&gt;<ph id="1">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="2">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;For example, a &lt;b&gt;single English sentence&lt;/b&gt; may naturally become &lt;b&gt;two sentences&lt;/b&gt; in Japanese or German.&lt;/p&gt;<ph id="3">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="4">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;By performing the split &lt;b&gt;outside the CAT tool&lt;/b&gt;, translators can improve &lt;b&gt;readability and translation quality&lt;/b&gt; without breaking tool constraints.&lt;/p&gt;<ph id="5">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="6">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;All &lt;b&gt;inline tags and identifiers&lt;/b&gt; are preserved during the split process.&lt;/p&gt;<ph id="7">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="8">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;This ensures that the modified file can be &lt;b&gt;safely re-imported&lt;/b&gt; into the original CAT environment.&lt;/p&gt;<ph id="9">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph><ph id="10">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph>&lt;p&gt;The result is a workflow that balances &lt;b&gt;linguistic freedom&lt;/b&gt; with &lt;b&gt;technical safety&lt;/b&gt;.&lt;/p&gt;<ph id="11">&lt;mq:ch val=&quot;
+&quot; /&gt;</ph></source>
+<target xml:space="preserve"/>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+</mq:historical-unit>
+</mq:minorversions>
+<mq:startingws xml:space="preserve"/>
+<mq:endingws xml:space="preserve"/>
+<mq:commitinfos/><mq:nosplitjoins><mq:nosplitjoin type="JoinNext" reason="filter"/><mq:nosplitjoin type="JoinPrevious" reason="filter"/></mq:nosplitjoins>
+<mq:originalsource edited="false"/>
+<context-group><context context-type="x-mmq-context">669be951-dfb7-4be9-95b9-13d8668f964b</context></context-group></trans-unit>
+</body>
+</file>
+</xliff>

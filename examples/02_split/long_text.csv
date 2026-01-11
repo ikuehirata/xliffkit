@@ -1,0 +1,24 @@
+en-us,ja-jp
+"<h2>Key Features of This Function</h2>
+
+<p>In <b>multilingual texts</b> such as videogame store descriptions, segment splitting is often <b>disabled in CAT tools</b> to preserve cross-language alignment.</p>
+
+<p>As a result, translators are forced to work with <b>overly long and complex segments</b> that mix multiple sentences or ideas.</p>
+
+<p>This function allows <b>safe external splitting</b> of such segments while keeping the original <b>structural integrity</b> required by CAT tools.</p>
+
+<p>Each split segment remains <b>traceable to its original context</b>, ensuring that <b>merge operations</b> can reliably reconstruct the source file.</p>
+
+<p>The feature is designed for scenarios where <b>different languages require different sentence boundaries</b>.</p>",
+"<h2>Why External Splitting Is Necessary</h2>
+
+<p>For example, a <b>single English sentence</b> may naturally become <b>two sentences</b> in Japanese or German.</p>
+
+<p>By performing the split <b>outside the CAT tool</b>, translators can improve <b>readability and translation quality</b> without breaking tool constraints.</p>
+
+<p>All <b>inline tags and identifiers</b> are preserved during the split process.</p>
+
+<p>This ensures that the modified file can be <b>safely re-imported</b> into the original CAT environment.</p>
+
+<p>The result is a workflow that balances <b>linguistic freedom</b> with <b>technical safety</b>.</p>
+",

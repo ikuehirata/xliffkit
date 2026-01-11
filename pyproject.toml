@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xliffkit"
+version = "0.1.0"
+
+readme = "README.md"
+license = { text = "MIT" }
+
+dependencies = [
+    "lxml",
+]
+
+
+# 明示的に配布対象パッケージを制限する設定。
+# Flat layout のルートに複数トップレベルディレクトリがあるため、
+# setuptools に自動検出をさせると 'txt' や 'samples' なども
+# パッケージ候補として見つかりビルドが失敗する。
+# ここでは 'xliffkit' のみを含めるように指定する。
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["xliffkit*"]
+
+[tool.ruff]
+line-length = 100               # 好きな値に
+target-version = "py313"        # 使ってるPythonに合わせて
+
+# Lintの有効ルールセット。E,F(基本), I(インポート整列), Q(クオート),
+# D(ドキュストリング)を使う。必要に応じて増減してOK。
+[tool.ruff.lint]
+select = ["E", "F", "I", "Q", "D"]
+# 自動修正を積極化（VS Codeの保存時Fixにも効く）
+fixable = ["ALL"]
+ignore = ["D400", "D401", "D403"]
+
+# flake8-quotes 互換オプション（Ruffに内蔵）
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"        # 通常の文字列は 'シングル'
+multiline-quotes = "single"     # 複数行の“通常文字列”もシングル（任意）
+docstring-quotes = "double"     # docstringは """ダブル"""
+avoid-escape = true             # 余計なバックスラッシュ回避のためにクオートを反転
+
+# pydocstyle（Dルール）のスタイル。PEP 257/Google/Numpyから選べる
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+# フォーマッタ（Ruff formatter）
+[tool.ruff.format]
+quote-style = "single"          # フォーマッタ視点でも通常はシングル
+indent-style = "space"
+line-ending = "auto"
+docstring-code-format = true    # docstring内のコードブロックも整形

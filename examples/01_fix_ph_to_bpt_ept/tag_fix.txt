@@ -1,0 +1,5 @@
+<b>This is a proper way to use a tag.</b>
+
+<i>This tag is all ph.</i>
+
+<style>This tag is all bpt.</style>
