@@ -1,8 +1,8 @@
 """xliffkit.segment
 
-Segment editing utilities (flatten / split / merge).
+Segment editing utilities (split / merge).
 
-Mainly exposes operational functions like `flatten.flatten_tu`.
+Mainly exposes operational functions.
 """
 
 from __future__ import annotations

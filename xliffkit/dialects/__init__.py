@@ -1,4 +1,4 @@
-"""xliffkit.core.dialects
+"""xliffkit.dialects
 
 Subpackage that aggregates dialect (Dialect) definitions.
 Re-exports main dialect classes here.

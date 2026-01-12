@@ -18,7 +18,7 @@ from __future__ import annotations
 from importlib.metadata import PackageNotFoundError, version
 
 # package submodules
-from . import core, exceptions, io, normalize, segment, utils
+from . import core, dialects, exceptions, io, normalize, segment, utils
 
 # package version (できるだけ importlib.metadata から取得し、失敗時は '0.0.0')
 try:
@@ -28,5 +28,5 @@ except PackageNotFoundError:
 
 __all__ = [
     '__version__',
-    'core', 'io', 'normalize', 'segment', 'utils', 'exceptions',
+    'core', 'dialects', 'io', 'normalize', 'segment', 'utils', 'exceptions',
 ]
