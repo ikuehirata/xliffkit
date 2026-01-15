@@ -67,7 +67,7 @@ def serialize_mqxliff(
     tree = getattr(doc, 'raw_tree', None)
     if tree is None:
         # root から ElementTree を作って write
-        tree = etree.Element(root)
+        tree = etree.ElementTree(root)
 
     # バイナリで一度バッファに書く
     buf = BytesIO()

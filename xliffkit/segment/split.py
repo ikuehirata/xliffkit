@@ -10,8 +10,9 @@ segments, and does not embed split metadata into the XLIFF.
 from __future__ import annotations
 
 import re
-import uuid
 from typing import Pattern
+
+from xliffkit.normalize.context_id import normalize_context_ids
 
 from ..core.models import TU, InlineTag, Segment, XliffDocument
 from ..normalize.flatten import TOKEN_CLOSE, TOKEN_OPEN
@@ -23,7 +24,6 @@ def _default_trigger() -> Pattern[str]:
 
 def split_tu(
         tu: TU,
-        release_new_context_id: bool = True,
         trigger: Pattern[str] | str | None = None,
     ) -> list[TU]:
     """Split a single ``TU`` into multiple ``TU``s.
@@ -41,13 +41,6 @@ def split_tu(
     else:
         pattern = trigger
 
-    # context_id の決定
-    org_context_id = tu.context_id
-    if release_new_context_id:
-        parent_context_id = str(uuid.uuid4())
-    else:
-        parent_context_id = org_context_id or str(uuid.uuid4())
-
     flat = tu.source.flattened_text or ''
     if not flat:
         # 空テキストはそのまま返す
@@ -55,7 +48,7 @@ def split_tu(
             tu_id='',
             source=tu.source.with_text(tu.source.text),
             target=(tu.target.with_text(tu.target.text) if tu.target is not None else None),
-            context_id=parent_context_id,
+            context_id=tu.context_id,
             raw_xml=tu.raw_xml,
         )
         return [new_tu]
@@ -74,7 +67,8 @@ def split_tu(
     # 3. 各チャンクから新 TU を再構築
     parts: list[TU] = []
     for idx, chunk in enumerate(result_chunks):
-        new_tu = reconstruct_tu_from_chunk(tu, chunk, parent_context_id, is_first=(idx == 0))
+        assert tu.context_id is not None, 'Original TU must have context_id.'
+        new_tu = reconstruct_tu_from_chunk(tu, chunk, tu.context_id, is_first=(idx == 0))
         parts.append(new_tu)
 
     if not parts:
@@ -277,7 +271,7 @@ def reconstruct_tu_from_chunk(
     return new_tu
 
 
-def release_new_context_id(tus: list[TU]) -> bool:
+def is_to_release_new_context_id(tus: list[TU]) -> bool:
     """Release new context IDs for `tus` in-place."""
     # context_idが存在しない場合は新規発行する
     ctx_ids = [(t.context_id, t.tu_id) for t in tus]
@@ -304,11 +298,12 @@ def split_document(
     ) -> XliffDocument:
     """Return a new XliffDocument with `tus` split by sentence."""
     # 新規context_id 発行の要否を判定
-    release_new_id = release_new_context_id(doc.tus)
+    if is_to_release_new_context_id(doc.tus):
+        doc = normalize_context_ids(doc)
 
     new_tus: list[TU] = []
     for tu in doc.tus:
-        parts = split_tu(tu, trigger=trigger, release_new_context_id=release_new_id)
+        parts = split_tu(tu, trigger=trigger)
         new_tus.extend(parts)
 
     # 新規docを作成

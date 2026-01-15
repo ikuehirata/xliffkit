@@ -56,31 +56,30 @@ def _render_segment(segment: Segment) -> str:
     text = segment.text or ''
 
     # Escape normal text parts, but keep tokens intact. Tokens are in a
-    # private area and survive escaping.
-    escaped = saxutils.escape(text)
-
+    # private area and survive escaping. To avoid changing string lengths
+    # (which would shift insertion positions), we build the output by
+    # emitting escaped slices from the original `text` and inserting tag
+    # XML at the original positions.
     tags = segment.inline_tags or []
     if not tags:
-        return escaped
+        return saxutils.escape(text)
 
-    # マッピングを、tag_id順に、positionとxmlとで作成
-    mapping: dict[int, dict] = {}
-    for tag in tags:
-        tid = int(tag.tag_id)
-        position = tag.position
-        mapping[tid] = {
-            'position': position,
-            'xml': _render_inline_tag(tag),
-        }
-    # mappingをtidの逆順にソート（置換で位置がずれないようにするため）
-    sorted_items = sorted(mapping.items(), key=lambda x: x[0], reverse=True)
+    # Sort tags by position (ascending). If positions tie, fall back to tag_id
+    # for deterministic ordering.
+    sorted_tags = sorted(tags, key=lambda t: (t.position, int(t.tag_id)))
 
-    # positionの位置にxmlを挿入していく
-    result = escaped
-    for _, info in sorted_items:
-        pos = info['position']
-        xml = info['xml']
-        result = result[:pos] + xml + result[pos:]
+    parts: list[str] = []
+    prev = 0
+    for tag in sorted_tags:
+        pos = int(tag.position)
+        if pos < prev:
+            pos = prev
+        parts.append(saxutils.escape(text[prev:pos]))
+        parts.append(_render_inline_tag(tag))
+        prev = pos
+
+    parts.append(saxutils.escape(text[prev:]))
+    result = ''.join(parts)
 
     return result
 
