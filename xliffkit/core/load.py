@@ -29,4 +29,6 @@ def load(path: str, roundtrip: bool = False) -> XliffDocument:
     # 修正と正規化
     doc = tags.normalize_all_tags(doc)
     doc = flatten.flatten_all_segments(doc)
+    # flatten 後に空白正規化を行う
+    doc = flatten.normalize_whitespace_all_segments(doc)
     return doc
