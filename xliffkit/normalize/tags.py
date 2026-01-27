@@ -54,7 +54,7 @@ class InlineTagToken:
 
 _MQ_VAL_RE = re.compile(r'val="([^"]+)"')
 _TAG_RE = re.compile(
-    r'^<\s*(/)?\s*([a-zA-Z0-9:_-]+)',
+    r'^(?:<|\[)\s*(/)?\s*([a-zA-Z0-9:_-]+)',
     re.VERBOSE,
 )
 

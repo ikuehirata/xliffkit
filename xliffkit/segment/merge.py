@@ -66,11 +66,11 @@ def _merge_segments(segments: list[Segment]) -> Segment:
         # 3. Append the adjusted flattened text into the merged flat
         # (space-separated if not structured tag or Japanese).
         adjusted_notag = token_re.sub('', adjusted)
-        if merged_flat_parts and previous_adjusted.strip() and adjusted_notag.strip() and \
+        if len(merged_flat_parts) > 0 and previous_adjusted.strip() and adjusted_notag.strip() and \
             base.lang not in NO_WORD_SEPARATION_LANGS:
             merged_flat_parts.append(' ')
-            previous_adjusted = adjusted
         merged_flat_parts.append(adjusted)
+        previous_adjusted = adjusted
 
         for t in (segment.inline_tags or []):
             try:
@@ -106,6 +106,11 @@ def _merge_tu_group(group: List[TU]) -> TU:
     Returns a new TU based on the first TU in the group with merged
     `source` and `target` segments and renumbered inline tags.
     """
+    # TUが1個しかないならそのまま返す
+    if len(group) == 1:
+        return group[0]
+
+    # 複数個ある場合
     sources = [tu.source for tu in group]
     targets = [tu.target for tu in group if tu.target is not None]
 

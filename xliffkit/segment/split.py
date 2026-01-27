@@ -34,13 +34,6 @@ def split_tu(
     3. Split the flatten text into chunks (``split_flatten``)
     4. Reconstruct new TUs from each chunk (``reconstruct_tu_from_chunk``)
     """
-    if trigger is None:
-        pattern = _default_trigger()
-    elif isinstance(trigger, str):
-        pattern = re.compile(trigger)
-    else:
-        pattern = trigger
-
     flat = tu.source.flattened_text or ''
     if not flat:
         # 空テキストはそのまま返す
@@ -61,12 +54,22 @@ def split_tu(
 
     # 2. 各構造チャンクに対して文分割をかける
     result_chunks: list[str] = []
+    pattern = _default_trigger()
     for sch in structural_chunks:
-        result_chunks.extend(split_by_sentence_rules(sch, pattern))
+        result_chunks.extend(split_by_pattern(sch, pattern))
 
-    # 3. 各チャンクから新 TU を再構築
+    # 3. triggerがある場合は分割、ない場合はそのまま
+    trigger_chunks: list[str] = []
+    if trigger is not None:
+        trigger_pattern = re.compile(trigger)
+        for sch in result_chunks:
+            trigger_chunks.extend(split_by_pattern(sch, trigger_pattern))
+    else:
+        trigger_chunks = result_chunks
+
+    # 4. 各チャンクから新 TU を再構築
     parts: list[TU] = []
-    for idx, chunk in enumerate(result_chunks):
+    for idx, chunk in enumerate(trigger_chunks):
         assert tu.context_id is not None, 'Original TU must have context_id.'
         new_tu = reconstruct_tu_from_chunk(tu, chunk, tu.context_id, is_first=(idx == 0))
         parts.append(new_tu)
@@ -140,7 +143,7 @@ def split_by_structural_tags(flat: str, inline_tags: list[InlineTag]) -> list[st
     return [c.strip() for c in chunks if c.strip() != '']
 
 
-def split_by_sentence_rules(chunk: str, pattern: Pattern[str]) -> list[str]:
+def split_by_pattern(chunk: str, pattern: Pattern[str]) -> list[str]:
     """Apply sentence-splitting rules to a chunk and return sentence chunks."""
     points = detect_split_points(chunk, pattern)
     return split_flatten(chunk, points)

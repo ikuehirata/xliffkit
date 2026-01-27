@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.3]
+
+### Fixed
+- Fixed tag regex.
+- Optimized merge process.
+- Fixed tag sorting by position.
+- Fixed where half-width space was not added when merging non-`NO_WORD_SEPARATION_LANGS` languages.
+
+### Added
+- Added whilespace normalization to `load()`.
+- Enabled `trigger` in `split_tu()` for segment splitting.
+
 ## [0.1.2]
 
 ### Fixed
