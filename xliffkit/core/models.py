@@ -7,7 +7,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Literal
 
 import lxml.etree as etree
 
@@ -51,7 +51,11 @@ class Segment:
         Original source text for TMX match calculations and reconstruction
         (includes invisible characters).
     raw_xml : etree.Element | None
-        raw_xml may be stored by the parser as a fallback for serializer failures.
+        Raw XML of the segment, set by the parser if available.
+        Used as a fallback if serialization fails.
+    flattened_text : str | None
+        Text after flattening (includes invisible characters).
+        Used only during flattening.
 
     Methods
     -------
@@ -124,8 +128,13 @@ class TU:
     context_id: str | None = None
     '''Context ID'''
 
-    state: str = 'new'  # TODO Literal[
-    # 'new', 'needs-review-translation', 'translated', 'final', 'final'] = 'new'にしたい
+    state: Literal[
+        'new',
+        'needs-review-translation',
+        'translated',
+        'final'
+    ] = 'new'
+    '''翻訳状態'''
     comment: str | None = None
     '''Comment from the tool'''
 

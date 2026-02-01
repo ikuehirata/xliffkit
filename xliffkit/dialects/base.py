@@ -1,5 +1,21 @@
 """XLIFF basic dialect definition module."""
+from typing import Literal, cast
+
 import lxml.etree as etree
+
+State = Literal[
+    'new',
+    'needs-review-translation',
+    'translated',
+    'final',
+]
+
+_ALLOWED_STATES: set[str] = {
+    'new',
+    'needs-review-translation',
+    'translated',
+    'final',
+}
 
 
 class Dialect:
@@ -85,9 +101,12 @@ class Dialect:
         """
         return {}
 
-    def normalize_state(self, raw_state: str, attrs: dict[str, str]) -> str:
+    def normalize_state(self, raw_state: str, attrs: dict[str, str]) -> State:
         """Normalize the state attribute."""
-        return raw_state
+        if raw_state in _ALLOWED_STATES:
+            return cast(State, raw_state)
+        else:
+            return 'new'
 
     def get_context_id(self, elem: etree.Element) -> str | None:
         """Get context_id from context_xml."""

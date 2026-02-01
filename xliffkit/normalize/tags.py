@@ -116,16 +116,15 @@ def build_inline_tag_tokens(
             if plain:
                 is_open, is_close, tag_name = analyze_plain_tag(plain)
             corrected_tag = 'ph'
-        else:
-            # bpt / ept は強制的に開閉を決定
-            if tag.tag == 'bpt':
-                is_open = True
-                tag_name = 'unknown'  # 不明
-                corrected_tag = 'bpt'
-            elif tag.tag == 'ept':
-                is_close = True
-                tag_name = 'unknown'  # 不明
-                corrected_tag = 'ept'
+        # bpt / ept は強制的に開閉を決定
+        elif tag.tag == 'bpt':
+            is_open = True
+            tag_name = 'unknown'  # 不明
+            corrected_tag = 'bpt'
+        elif tag.tag == 'ept':
+            is_close = True
+            tag_name = 'unknown'  # 不明
+            corrected_tag = 'ept'
 
         token = InlineTagToken(
             idx=idx,

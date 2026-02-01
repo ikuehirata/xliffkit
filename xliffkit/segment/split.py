@@ -12,9 +12,8 @@ from __future__ import annotations
 import re
 from typing import Pattern
 
-from xliffkit.normalize.context_id import normalize_context_ids
-
 from ..core.models import TU, InlineTag, Segment, XliffDocument
+from ..normalize.context_id import normalize_context_ids
 from ..normalize.flatten import TOKEN_CLOSE, TOKEN_OPEN
 
 
@@ -67,6 +66,9 @@ def split_tu(
     else:
         trigger_chunks = result_chunks
 
+    # trigger_chunks の終端を調整する
+    trigger_chunks = adjust_trigger_chunks(trigger_chunks, tu.source.inline_tags)
+
     # 4. 各チャンクから新 TU を再構築
     parts: list[TU] = []
     for idx, chunk in enumerate(trigger_chunks):
@@ -78,6 +80,68 @@ def split_tu(
         return [tu]
 
     return parts
+
+
+def adjust_trigger_chunks(
+    chunks: list[str], inline_tags: list[InlineTag] | None
+) -> list[str]:
+    """Adjust chunks end.
+
+    if next chunk starts with a closing tag, move it to the end of the current chunk.
+
+    Parameters
+    ----------
+    chunks : list[str]
+        List of split chunks.
+    inline_tags : list[InlineTag] | None
+        Inline tags list of the original segment.
+
+    Returns
+    -------
+    list[str]
+        Adjusted list of chunks.
+    """
+    if not chunks:
+        return chunks
+
+    # 安全のため inline_tags を辞書化しておく (tag_id -> InlineTag)
+    tag_map: dict[str, InlineTag] = {}
+    for t in (inline_tags or []):
+        tid = getattr(t, 'tag_id', None)
+        if tid is not None:
+            tag_map[tid] = t
+
+    i = 0
+    # 先頭から走査して、次のチャンクの先頭に ept トークンがあれば移動する
+    while i < len(chunks) - 1:
+        # 次チャンクを参照
+        next_chunk = chunks[i + 1]
+        moved = False
+        # next_chunk の先頭にトークンがある限り繰り返す
+        while next_chunk.startswith(TOKEN_OPEN):
+            end_idx = next_chunk.find(TOKEN_CLOSE, len(TOKEN_OPEN))
+            if end_idx == -1:
+                break
+            tag_id = next_chunk[len(TOKEN_OPEN):end_idx]
+            inline_tag = tag_map.get(tag_id)
+            # 該当タグが存在し、かつタグ名が 'ept' の場合に移動する
+            if inline_tag is None or getattr(inline_tag, 'tag', None) != 'ept':
+                break
+            # トークン部を切り出して前チャンクの末尾に追加
+            token = next_chunk[: end_idx + len(TOKEN_CLOSE)]
+            chunks[i] = (chunks[i] or '') + token
+            # next_chunk から先頭トークンを取り除く
+            next_chunk = next_chunk[end_idx + len(TOKEN_CLOSE) :]
+            chunks[i + 1] = next_chunk
+            moved = True
+        # 移動後、もし次チャンクが空になっていたら削除して同じ i を再チェック
+        if moved and chunks[i + 1].strip() == '':
+            chunks.pop(i + 1)
+            # 次チャンクが消えたので同じ i で再度確認
+            continue
+        i += 1
+
+    return chunks
 
 
 def normalize_flatten(flat: str) -> str:
@@ -297,15 +361,34 @@ def is_to_release_new_context_id(tus: list[TU]) -> bool:
 
 def split_document(
         doc: XliffDocument,
-        trigger: Pattern[str] | str | None = None
+        trigger: Pattern[str] | str | None = None,
+        split_policy: dict[str, bool] | None = None,
     ) -> XliffDocument:
-    """Return a new XliffDocument with `tus` split by sentence."""
+    """Return a new XliffDocument with `tus` split by sentence.
+
+    Parameters
+    ----------
+    doc : XliffDocument
+        The XLIFF document to split.
+    trigger : Pattern[str] | str | None, optional
+        The sentence split trigger pattern. If None, no sentence splitting
+        is applied (only structural splitting). By default None.
+    split_policy : dict[str, bool] | None, optional
+        A mapping from `tu_id` to a boolean indicating whether to split
+        that TU. If None, all TUs are split. By default None.
+    """
     # 新規context_id 発行の要否を判定
     if is_to_release_new_context_id(doc.tus):
         doc = normalize_context_ids(doc)
 
     new_tus: list[TU] = []
     for tu in doc.tus:
+        # split_policy がある場合はそれに従う
+        if split_policy is not None:
+            do_split = split_policy.get(tu.tu_id, True)
+            if not do_split:
+                new_tus.append(tu)
+                continue
         parts = split_tu(tu, trigger=trigger)
         new_tus.extend(parts)
 
