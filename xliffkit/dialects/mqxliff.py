@@ -1,8 +1,10 @@
 """memoQ XLIFF (mqXLIFF) dialect definition"""
+from typing import cast
+
 import lxml.etree as etree
 
 from ..core.models import TU
-from .base import Dialect
+from .base import Dialect, State
 
 
 class MQXLIFF(Dialect):
@@ -95,7 +97,7 @@ class MQXLIFF(Dialect):
 
     def normalize_state(
             self, raw_state: str, extra_attrs: dict[str, str]
-    ) -> str:
+    ) -> State:
         """Normalize memoQ-specific state attribute."""
         mapping = {
             'NotStarted': 'new',
@@ -106,9 +108,9 @@ class MQXLIFF(Dialect):
         }
         mq_status = self.get_attr_by_local_name(extra_attrs, 'status')
         if mq_status:
-            return mapping.get(mq_status, 'new')
+            return cast(State, mapping.get(mq_status, 'new'))
 
-        return raw_state
+        return cast(State, raw_state)
 
     def get_context_id(self, elem: etree.Element) -> str | None:
         """Normalize memoQ-specific state attribute."""

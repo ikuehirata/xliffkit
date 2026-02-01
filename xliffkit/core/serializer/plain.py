@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import xml.sax.saxutils as saxutils
 from pathlib import Path
-from typing import Union
+from typing import Callable
 
 from ..models import InlineTag, Segment, XliffDocument
 
@@ -45,12 +45,28 @@ def _render_inline_tag(tag: InlineTag) -> str:
     return f'<{tag_name}{attr_text}>{inner}</{tag_name}>'
 
 
-def _render_segment(segment: Segment) -> str:
+def _render_segment(
+    segment: Segment,
+    tag_renderer: Callable[[InlineTag], str] = _render_inline_tag
+) -> str:
     """Render a Segment into an XML string for source/target element inner XML.
 
     Prefer using raw_inner when available: this preserves existing inline
     elements and avoids fragile string-only manipulations. The raw_inner is
     expected to be a string containing the full element (e.g. '<source>...</source>').
+
+    Parameters
+    ----------
+    segment : Segment
+        Segment to render.
+    tag_renderer : Callable[[InlineTag], str]
+        Function to render an InlineTag into an XML string.
+        Defaults to `_render_inline_tag`.
+
+    Returns
+    -------
+    str
+        Rendered XML string for the segment.
     """
     # Use token-based replacement (existing behaviour).
     text = segment.text or ''
@@ -75,7 +91,7 @@ def _render_segment(segment: Segment) -> str:
         if pos < prev:
             pos = prev
         parts.append(saxutils.escape(text[prev:pos]))
-        parts.append(_render_inline_tag(tag))
+        parts.append(tag_renderer(tag))
         prev = pos
 
     parts.append(saxutils.escape(text[prev:]))
@@ -84,14 +100,14 @@ def _render_segment(segment: Segment) -> str:
     return result
 
 
-def serialize(xdoc: XliffDocument, out_path: Union[str, Path]) -> None:
+def serialize(xdoc: XliffDocument, out_path: str | Path) -> None:
     """Serialize XliffDocument to an XLIFF 1.2 XML string.
 
     Parameters
     ----------
     xdoc : XliffDocument
         Document to serialize.
-    out_path : str
+    out_path : str | Path
         Output file path (used for writing).
 
     """

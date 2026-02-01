@@ -2,7 +2,7 @@
 
 import uuid
 
-from xliffkit.core.models import XliffDocument
+from ..core.models import XliffDocument
 
 
 def normalize_context_ids(

@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.4]
+
+### Fixed
+- Ignored `<mrk>` while parsing (highlight source/target where commented)
+- Moved `docs` to root
+- Converted package-internal imports to relative imports
+
+### Added
+- Added `split_policy` to `split_document()` which enables/disables split per segment.
+- When splitting segments, `<ept>` tags will be moved to the previous segment.
+- Added a function to convert `xliff` to `tmx`, utilizing `tmxkit`. (example 04)
+
 ## [0.1.3]
 
 ### Fixed

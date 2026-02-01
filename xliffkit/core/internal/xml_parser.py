@@ -58,7 +58,8 @@ def parse_inline_tag(child: etree.Element, position: int) -> tuple[InlineTag, st
     raw_xml = etree.tostring(child, encoding='unicode')
     raw_xml = _trim_xml_fragment(raw_xml)
     raw_xml = _strip_namespace_from_fragment(raw_xml)
-    raw_inner = re.sub(r'^<[^>]+>|</[^>]+>$', '', raw_xml).strip()
+    _pattern_strip_tags = re.compile(r'^<[^>]+>|</[^>]+>$')
+    raw_inner = _pattern_strip_tags.sub('', raw_xml).strip()
 
     return InlineTag(
         tag=tag,
@@ -109,9 +110,17 @@ def _parse_segment(elem: etree.Element | None, lang: str | None = None) -> Segme
     # 子要素を順に処理: elem.text の蓄積長を position として渡す
     for child in elem:
         pos = len(''.join(pure_texts))
-        tag, raw_xml = parse_inline_tag(child, position=pos)
-        inline_tags.append(tag)
-        raw_texts.append(raw_xml)
+        child_tag = _strip_ns(child.tag)
+        if child_tag == 'mrk':  # TODO これはmemoQ依存の名前 コメントがついてるところを削除した
+            # <mrk> は無視して内部テキストのみ取り込む
+            inner_text = ''.join(child.itertext()).strip()
+            if inner_text:
+                pure_texts.append(inner_text)
+                raw_texts.append(inner_text)
+        else:
+            tag, raw_xml = parse_inline_tag(child, position=pos)
+            inline_tags.append(tag)
+            raw_texts.append(raw_xml)
 
         # child.tail = タグ直後のテキスト
         if child.tail:
