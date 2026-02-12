@@ -1,3 +1,12 @@
+*code-workspace
+tests
+README_dev.md
+xliffkit/io/yaml*
+TODO.md
+docs/_notes
+scripts
+.github
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -214,11 +223,3 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-
-*code-workspace
-tests
-samples
-README_dev.md
-xliffkit/io/yaml*
-TODO.md
-docs/_notes

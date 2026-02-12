@@ -11,6 +11,20 @@ from typing import Any, Literal
 
 import lxml.etree as etree
 
+State = Literal[
+    'new',
+    'needs-review-translation',
+    'translated',
+    'final',
+]
+
+_ALLOWED_STATES: set[str] = {
+    'new',
+    'needs-review-translation',
+    'translated',
+    'final',
+}
+
 
 @dataclass
 class InlineTag:
@@ -128,13 +142,12 @@ class TU:
     context_id: str | None = None
     '''Context ID'''
 
-    state: Literal[
-        'new',
-        'needs-review-translation',
-        'translated',
-        'final'
-    ] = 'new'
-    '''翻訳状態'''
+    is_locked: bool = False
+    '''Whether the TU is locked.'''
+
+    state: State = 'new'
+    '''Translation state.'''
+
     comment: str | None = None
     '''Comment from the tool'''
 
@@ -177,6 +190,7 @@ class TU:
             source=source,
             target=target,
             context_id=self.context_id,
+            is_locked=self.is_locked,
             state=self.state,
             comment=self.comment,
             order=self.order,
@@ -204,6 +218,9 @@ class XliffDocument:
     raw_xml: etree.Element | None = None
     '''Raw XML of the entire file. Generally not used, but kept as a fallback.'''
 
+    document_name: str | None = None
+    '''Document name, if available. Used for TMX export and reconstruction.'''
+
     def with_tus(self, tus: list[TU]) -> XliffDocument:
         """Return a new XliffDocument with `tus` replaced."""
         return XliffDocument(
@@ -213,6 +230,7 @@ class XliffDocument:
             target_lang=self.target_lang,
             metadata=self.metadata,
             raw_xml=self.raw_xml,
+            document_name=self.document_name,
         )
 
     def reorder_tu_id(self) -> XliffDocument:

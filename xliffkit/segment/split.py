@@ -154,7 +154,8 @@ def normalize_flatten(flat: str) -> str:
     out_parts: list[str] = []
     for i, p in enumerate(parts):
         if i == 0:
-            out_parts.append(re.sub(r'\s+', ' ', p).strip())
+            # TODO stripを追加してたけどしない方がよさげ
+            out_parts.append(re.sub(r'\s+', ' ', p))
             continue
         if TOKEN_CLOSE in p:
             token_content, rest = p.split(TOKEN_CLOSE, 1)
@@ -173,8 +174,10 @@ def split_by_structural_tags(flat: str, inline_tags: list[InlineTag]) -> list[st
     # special tag ids
     special_ids = {
         t.tag_id for t in (inline_tags or [])
-        if t.raw_inner and (
-            '\n' in t.raw_inner or '&lt;br' in t.raw_inner.lower())
+        if
+        (t.tag == 'x') or
+        (t.raw_inner and (
+            '\n' in t.raw_inner or '&lt;br' in t.raw_inner.lower()))
         and t.tag_id is not None}
     if not special_ids:
         return [flat]
@@ -197,14 +200,18 @@ def split_by_structural_tags(flat: str, inline_tags: list[InlineTag]) -> list[st
     for start, end in positions:
         if prev < start:
             chunks.append(flat[prev:start])
-        # structural token を独立チャンクとして追加
-        chunks.append(flat[start:end])
+        # structural token を前のチャンクにくっつける
+        # 先頭にある場合は新規チャンクとして扱う
+        token = flat[start:end]
+        if chunks:
+            chunks[-1] = (chunks[-1] or '') + token
+        else:
+            chunks.append(token)
         prev = end
     if prev < len(flat):
         chunks.append(flat[prev:])
 
-    # normalize chunks (strip and drop empty)
-    return [c.strip() for c in chunks if c.strip() != '']
+    return [c for c in chunks if c.strip() != '']
 
 
 def split_by_pattern(chunk: str, pattern: Pattern[str]) -> list[str]:
@@ -362,6 +369,7 @@ def is_to_release_new_context_id(tus: list[TU]) -> bool:
 def split_document(
         doc: XliffDocument,
         trigger: Pattern[str] | str | None = None,
+        split_locked_segments: bool = False,
         split_policy: dict[str, bool] | None = None,
     ) -> XliffDocument:
     """Return a new XliffDocument with `tus` split by sentence.
@@ -373,6 +381,9 @@ def split_document(
     trigger : Pattern[str] | str | None, optional
         The sentence split trigger pattern. If None, no sentence splitting
         is applied (only structural splitting). By default None.
+    split_locked_segments : bool, optional
+        Whether to split locked segments. If False, locked segments are not
+        split. If True, locked segments are split as normal. By default False.
     split_policy : dict[str, bool] | None, optional
         A mapping from `tu_id` to a boolean indicating whether to split
         that TU. If None, all TUs are split. By default None.
@@ -380,6 +391,15 @@ def split_document(
     # 新規context_id 発行の要否を判定
     if is_to_release_new_context_id(doc.tus):
         doc = normalize_context_ids(doc)
+
+    # split_locked_segments が False の場合は、
+    # locked な TU を split_policy に従って分割しないようにする
+    if not split_locked_segments:
+        if split_policy is None:
+            split_policy = {}
+        for tu in doc.tus:
+            if tu.is_locked:
+                split_policy[tu.tu_id] = False
 
     new_tus: list[TU] = []
     for tu in doc.tus:

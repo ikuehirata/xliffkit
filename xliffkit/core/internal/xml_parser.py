@@ -153,9 +153,11 @@ def parse_xliff(path: str, dialect: Dialect) -> XliffDocument:
     # source_lang, traget_lang は file 要素から取得
     file_elm = root.find('.//{*}file')
     if file_elm is not None:
+        document_name = file_elm.attrib.get('original')
         source_lang = file_elm.attrib.get('source-language')
         target_lang = file_elm.attrib.get('target-language')
     else:
+        document_name = None
         source_lang = root.attrib.get('source-language')
         target_lang = root.attrib.get('target-language')
 
@@ -165,9 +167,10 @@ def parse_xliff(path: str, dialect: Dialect) -> XliffDocument:
         if _strip_ns(elem.tag) != 'trans-unit':
             continue
 
+        # Tu 本体のID
         tu_id = elem.attrib.get('id', '')
-        raw_state = elem.attrib.get('state', 'new')  # 後で extra_attrs と合わせて正規化する
 
+        # ソースとターゲット、コメント
         source_elem = None
         target_elem = None
         note_elem = None
@@ -197,12 +200,9 @@ def parse_xliff(path: str, dialect: Dialect) -> XliffDocument:
 
         # ツール依存属性
         extra_attrs = {}
-        if dialect.preserve_tu_attrs:
-            for k, v in elem.attrib.items():
-                if k.startswith('{'):
-                    extra_attrs[k] = v
-        # ここで正規化する
-        state = dialect.normalize_state(raw_state, extra_attrs)
+        for k, v in elem.attrib.items():
+            if k.startswith('{'):
+                extra_attrs[k] = v
 
         comment = None
         if note_elem is not None:
@@ -212,7 +212,8 @@ def parse_xliff(path: str, dialect: Dialect) -> XliffDocument:
             tu_id=tu_id,
             source=source,
             target=target,
-            state=state,
+            is_locked=dialect.is_locked(elem),
+            state=dialect.get_state(elem),
             context_id=dialect.get_context_id(context_group_elem),
             comment=comment,
             order=order,
@@ -228,5 +229,6 @@ def parse_xliff(path: str, dialect: Dialect) -> XliffDocument:
         source_lang=source_lang,
         target_lang=target_lang,
         raw_xml=root,
-        metadata=dialect.extract_metadata(root)
+        metadata=dialect.extract_metadata(root),
+        document_name=document_name
     )

@@ -130,6 +130,14 @@ def sync_raw_with_tus(doc: XliffDocument) -> None:
         for child in trans_el:
             if etree.QName(child).localname == 'source':
                 _replace_inner_from_segment(child, tu.source)
+                # mq:segpart を置換
+                # tu.source.textの最後が<x ...>タグの場合、{} が最後に入るようにする
+                if tu.source.inline_tags and tu.source.inline_tags[-1].tag == 'x':
+                    last_idx = index + 1
+                else:
+                    last_idx = index
+                trans_el.attrib['{MQXliff}firstlabel'] = str(index)
+                trans_el.attrib['{MQXliff}lastlabel'] = str(last_idx)
                 break
 
         # Target

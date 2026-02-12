@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.5]
+
+### Fixed
+- Separated `TU.state` decision making per dialect.
+- Converter to `tmx`: Fixed several attribution imports from `mqxliff`.
+
+### Added
+- Added a member `TU.locked`.
+- Added `x` as a tag in TU (compatible with TMX export).
+- Supported segment splitting with `x`.
+- When splitting by structural tags, structural tags are attached to the previous chunk. WIP
+- Added a default setting so that locked TUs are not split during TU splitting.
+- Hotfix for context id extraction.
+
 ## [0.1.4]
 
 ### Fixed

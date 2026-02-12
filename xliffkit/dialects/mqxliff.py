@@ -6,6 +6,14 @@ import lxml.etree as etree
 from ..core.models import TU
 from .base import Dialect, State
 
+STATE_MAPPING = {
+    'NotStarted': 'new',
+    'Edited': 'needs-review-translation',
+    'PreTranslated': 'translated',
+    'Confirmed': 'final',
+    'ManuallyConfirmed': 'final',
+}
+
 
 class MQXLIFF(Dialect):
     """memoQ XLIFF dialect definition."""
@@ -95,26 +103,19 @@ class MQXLIFF(Dialect):
 
         return extra
 
-    def normalize_state(
-            self, raw_state: str, extra_attrs: dict[str, str]
-    ) -> State:
+    def get_state(self, elem: etree.Element) -> State:
         """Normalize memoQ-specific state attribute."""
-        mapping = {
-            'NotStarted': 'new',
-            'Edited': 'needs-review-translation',
-            'PreTranslated': 'translated',
-            'Confirmed': 'final',
-            'ManuallyConfirmed': 'final',
-        }
-        mq_status = self.get_attr_by_local_name(extra_attrs, 'status')
-        if mq_status:
-            return cast(State, mapping.get(mq_status, 'new'))
+        for k, v in elem.attrib.items():
+            if 'status' in k:
+                xliff_state = STATE_MAPPING.get(v, 'new')
+                return cast(State, xliff_state)
 
-        return cast(State, raw_state)
+        return 'new'
 
     def get_context_id(self, elem: etree.Element) -> str | None:
-        """Normalize memoQ-specific state attribute."""
+        """Normalize memoQ-specific context attribute."""
         if elem is None:
+            print('elem is None')  # なんか対処が必要
             return None
         for child in elem:
             tag = child.tag
@@ -124,3 +125,11 @@ class MQXLIFF(Dialect):
                 return child.text
 
         return None
+
+    def is_locked(self, elem: etree.Element) -> bool:
+        """Check if the TU is locked based on memoQ-specific attributes."""
+        for k, v in elem.attrib.items():
+            if 'locked' in k.lower() and 'locked' in v.lower():
+                return True
+
+        return False

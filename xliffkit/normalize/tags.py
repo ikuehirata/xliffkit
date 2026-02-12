@@ -23,9 +23,9 @@ class InlineTagToken:
     tag_id : str
         InlineTag.tag_id
     original_tag : str
-        Original InlineTag.tag (mostly 'ph')
-    corrected_tag : Literal['ph', 'bpt', 'ept']
-        Tag type after normalization
+        元の InlineTag.tag（ほぼ ph）
+    corrected_tag : Literal['x', 'ph', 'bpt', 'ept']
+        tags corrected to their proper types based on analysis
     tag_name : str | None
         e.g. 'style', 'b', 'i', or None
     is_open : bool
@@ -42,7 +42,7 @@ class InlineTagToken:
     tag_id: str | None
     original_tag: str
     ''''元の InlineTag.tag（ほぼ ph）'''
-    corrected_tag: Literal['ph', 'bpt', 'ept']
+    corrected_tag: Literal['x', 'ph', 'bpt', 'ept']
     tag_name: str | None
     '''style / b / i / その他'''
     is_open: bool
@@ -125,6 +125,12 @@ def build_inline_tag_tokens(
             is_close = True
             tag_name = 'unknown'  # 不明
             corrected_tag = 'ept'
+        elif tag.tag == 'x':
+            is_close = False
+            tag_name = 'x'
+            corrected_tag = 'x'
+        else:
+            raise ValueError(f'Unexpected tag: {tag.tag}')
 
         token = InlineTagToken(
             idx=idx,
@@ -312,6 +318,9 @@ def normalize_tags_in_segment(seg: Segment) -> Segment:
     """
     # セグメントの元々の inline tag 列を中間生成物列に変換
     tokens = build_inline_tag_tokens(seg.inline_tags)
+    # TODO markdown で ** などの装飾タグに対応するためには、seg を渡して
+    # TODO raw_inner を直接解析する必要がある
+    # TODO ただしそこまでする必要ある？
     # ペアリングを実行
     pair_inline_tag_tokens(tokens)
     # rid を付与

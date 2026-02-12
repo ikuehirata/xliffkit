@@ -29,9 +29,11 @@ def _tag_renderer_for_tmx(tag: InlineTag) -> str:
     """
     if tag is None:
         return ''
-    tag_name = tag.tag or 'ph'
 
     attrs = []
+    # x タグの場合は <ph type='fmt'>{}</ph> に
+    if tag.tag == 'x':
+        return "<ph type='fmt'>{}</ph>"
     # it の場合は pos="begin" / "end" を付与する
     if tag.tag == 'it':
         if tag.raw_inner and tag.raw_inner.startswith('&lt;/'):
@@ -47,7 +49,7 @@ def _tag_renderer_for_tmx(tag: InlineTag) -> str:
     inner = tag.raw_inner or ''
     # TMX 用にエスケープ
     inner = inner.replace('<', '&lt;').replace('>', '&gt;')
-    return f'<{tag_name}{attr_text}>{inner}</{tag_name}>'
+    return f'<{tag.tag}{attr_text}>{inner}</{tag.tag}>'
 
 
 def make_tuv_from_seg(seg: Segment) -> etree.SubElement:
@@ -93,6 +95,7 @@ def convert_tu_to_element(
     org_tu: TU,
     include_locked: bool = False,
     escape_markup: bool = True,
+    document_name: str | None = None,
     client: str | None = None,
     project: str | None = None,
     domain: str | None = None,
@@ -135,16 +138,16 @@ def convert_tu_to_element(
     if locked and not include_locked:
         return None
 
-    changedate = get_attr(org_tu, '{MQXliff}lastchangedtimestamp', '')
-    creationdate = get_attr(org_tu, '{MQXliff}translatorcommittimestamp', '')
-    creationid = get_attr(org_tu, '{MQXliff}lastchanginguser', '')
-    changeid = get_attr(org_tu, '{MQXliff}translatorcommitusername', '')
+    changedate = get_attr(org_tu.extra_attrs, '{MQXliff}lastchangedtimestamp', '')
+    creationdate = get_attr(org_tu.extra_attrs, '{MQXliff}translatorcommittimestamp', '')
+    changeid = get_attr(org_tu.extra_attrs, '{MQXliff}lastchanginguser', '')
+    creationid = get_attr(org_tu.extra_attrs, '{MQXliff}translatorcommitusername', '')
 
     tu = etree.Element('tu')
     if changedate:
-        tu.set('changedate', changedate)
+        tu.set('changedate', changedate.replace(':', '').replace('-', ''))
     if creationdate:
-        tu.set('creationdate', creationdate)
+        tu.set('creationdate', creationdate.replace(':', '').replace('-', ''))
     if creationid:
         tu.set('creationid', creationid)
     if changeid:
@@ -152,7 +155,7 @@ def convert_tu_to_element(
 
     meta = get_attr(org_tu, 'meta', {}) or {}
     for key in ('client', 'project', 'domain', 'subject'):
-        val = meta.get(key) if isinstance(meta, dict) else ''
+        val = meta.get(key) if isinstance(meta, dict) else ' '
         if key == 'client' and client is not None:
             val = client
         elif key == 'project' and project is not None:
@@ -162,10 +165,14 @@ def convert_tu_to_element(
         elif key == 'subject' and subject is not None:
             val = subject
         p = etree.SubElement(tu, 'prop', {'type': f'x-{key}'})
-        p.text = val or ''
+        p.text = val or ' '
 
+    # document はここで追加
     p = etree.SubElement(tu, 'prop', {'type': 'x-document'})
-    p.text = meta.get('x-document', '') if isinstance(meta, dict) else ''
+    if document_name is not None:
+        p.text = document_name
+    else:
+        p.text = ' '
 
     # ここで `make_tuv_from_seg` を呼んで、返り値の `tuv` 要素を `tu` に追加する。
     # source 側の tuv を作成して tu に追加
@@ -195,6 +202,7 @@ class TuIterator:
         batch_size: int | None = None,
         progress_callback: Callable | None = None,
         escape_markup: bool = True,
+        document_name: str | None = None,
         client: str | None = None,
         project: str | None = None,
         domain: str | None = None,
@@ -213,7 +221,9 @@ class TuIterator:
         progress_callback : callable | None, optional
             Progress callback receiving (processed_count, skipped_count, error_count).
         escape_markup : bool, optional
-            If True, escape XLIFF markup when populating `seg`.
+            If True, escape markup within XLIFF and place it in `seg`.
+        document_name : str | None, optional
+            Value to forcefully specify the document name.
         client : str | None, optional
             Value to override the client property with.
         project : str | None, optional
@@ -230,6 +240,7 @@ class TuIterator:
         self.progress_callback = progress_callback
         self.escape_markup = escape_markup
         self.failures: list[dict] = []
+        self.document_name = document_name
         self.client = client
         self.project = project
         self.domain = domain
@@ -292,6 +303,7 @@ class TuIterator:
                 item,
                 include_locked=self.include_locked,
                 escape_markup=self.escape_markup,
+                document_name=self.document_name,
                 client=self.client,
                 project=self.project,
                 domain=self.domain,
@@ -301,7 +313,7 @@ class TuIterator:
 
 
 def iter_tu_elements(
-    tus: list[TU],
+    doc: XliffDocument,
     include_locked: bool = False,
     batch_size: int | None = None,
     progress_callback: Callable | None = None,
@@ -315,8 +327,8 @@ def iter_tu_elements(
 
     Parameters
     ----------
-    tus : list[TU]
-        List of TUs.
+    doc : XliffDocument
+        変換対象の XliffDocument。
     include_locked : bool, optional
         If True, include locked TUs (default False).
     batch_size : int | None, optional
@@ -340,11 +352,12 @@ def iter_tu_elements(
         An iterable iterator. After iteration, see `.failures` for failures.
     """
     return TuIterator(
-        tus=tus,
+        tus=doc.tus,
         include_locked=include_locked,
         batch_size=batch_size,
         progress_callback=progress_callback,
         escape_markup=escape_markup,
+        document_name=doc.document_name,
         client=client,
         project=project,
         domain=domain,
@@ -352,7 +365,11 @@ def iter_tu_elements(
     )
 
 
-def convert_xliffdoc_to_tmx(doc: XliffDocument, out_path: Path) -> None:
+def convert_xliffdoc_to_tmx(
+    doc: XliffDocument,
+    out_path: Path,
+    include_locked: bool = False
+) -> None:
     """Convert an entire XliffDocument to TMX.
 
     Parameters
@@ -360,17 +377,17 @@ def convert_xliffdoc_to_tmx(doc: XliffDocument, out_path: Path) -> None:
     doc : XliffDocument
         XliffDocument to convert.
     out_path : Path
-        Output TMX file path.
+        Output path for the generated TMX file.
+    include_locked : bool, optional
+        If True, include locked TUs (default False).
 
     Returns
     -------
     etree.Element
         TMX root element after conversion.
     """
-    # tmxkitがインストール済みかどうかを確認する
-
     # イテレータ
-    it = iter_tu_elements(doc.tus, include_locked=False, escape_markup=True)
+    it = iter_tu_elements(doc, include_locked=include_locked, escape_markup=True)
 
     # tmxkit の import を試みる。見つからない場合は導入手順を案内する。
     try:

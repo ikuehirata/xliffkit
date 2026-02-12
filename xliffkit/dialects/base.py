@@ -1,21 +1,9 @@
-"""XLIFF basic dialect definition module."""
-from typing import Literal, cast
+"""Module defining the base XLIFF dialect."""
+from typing import cast
 
 import lxml.etree as etree
 
-State = Literal[
-    'new',
-    'needs-review-translation',
-    'translated',
-    'final',
-]
-
-_ALLOWED_STATES: set[str] = {
-    'new',
-    'needs-review-translation',
-    'translated',
-    'final',
-}
+from ..core.models import _ALLOWED_STATES, State
 
 
 class Dialect:
@@ -101,13 +89,21 @@ class Dialect:
         """
         return {}
 
-    def normalize_state(self, raw_state: str, attrs: dict[str, str]) -> State:
-        """Normalize the state attribute."""
+    def get_state(self, elem: etree.Element) -> State:
+        """Get the state of a TU from the XML element."""
+        raw_state = elem.attrib.get('state', 'new')
         if raw_state in _ALLOWED_STATES:
             return cast(State, raw_state)
-        else:
-            return 'new'
+        return 'new'
 
     def get_context_id(self, elem: etree.Element) -> str | None:
-        """Get context_id from context_xml."""
+        """Get the context_id from the context_xml element."""
+        # context-group を探す
+        for child in elem:
+            if 'context-group' in child.tag:
+                return child
         return None
+
+    def is_locked(self, elem: etree.Element) -> bool:
+        """Check if the TU is locked based on attributes."""
+        return False
