@@ -17,13 +17,32 @@ from ..normalize.context_id import normalize_context_ids
 from ..normalize.flatten import TOKEN_CLOSE, TOKEN_OPEN
 
 
-def _default_trigger() -> Pattern[str]:
-    return re.compile(r'\.\s+')
+def _default_trigger(extra_lookbehinds: list[str] | None = None) -> Pattern[str]:
+    # 敬称・略語の後のピリオドは文末として扱わない（否定後読み）
+    _NO_TITLE = (
+        r'(?<!Dr)'
+        r'(?<!Ms)'
+        r'(?<!Mr)'
+        r'(?<!Sr)'
+        r'(?<!Jr)'
+        r'(?<!St)'
+        r'(?<!vs)'
+        r'(?<!Mrs)'
+        r'(?<!Rev)'
+        r'(?<!Prof)'
+    )
+    extra = ''
+    if extra_lookbehinds:
+        extra = ''.join(f'(?<!{re.escape(w)})' for w in extra_lookbehinds)
+    # 分割除外ワードは大小文字を無視して判定する
+    return re.compile(_NO_TITLE + extra + r'\.\s+', re.IGNORECASE)
 
 
 def split_tu(
         tu: TU,
         trigger: Pattern[str] | str | None = None,
+        extra_structural_patterns: list[str] | None = None,
+        extra_default_lookbehinds: list[str] | None = None,
     ) -> list[TU]:
     """Split a single ``TU`` into multiple ``TU``s.
 
@@ -41,6 +60,11 @@ def split_tu(
             source=tu.source.with_text(tu.source.text),
             target=(tu.target.with_text(tu.target.text) if tu.target is not None else None),
             context_id=tu.context_id,
+            is_locked=tu.is_locked,
+            state=tu.state,
+            comment=tu.comment,
+            order=tu.order,
+            extra_attrs=tu.extra_attrs,
             raw_xml=tu.raw_xml,
         )
         return [new_tu]
@@ -49,15 +73,17 @@ def split_tu(
     norm = normalize_flatten(flat)
 
     # 1.5 構造的分割: 改行/BR系タグで先に分割する
-    structural_chunks = split_by_structural_tags(norm, tu.source.inline_tags or [])
+    structural_chunks = split_by_structural_tags(
+        norm, tu.source.inline_tags or [], extra_structural_patterns
+    )
 
     # 2. 各構造チャンクに対して文分割をかける
     result_chunks: list[str] = []
-    pattern = _default_trigger()
+    pattern = _default_trigger(extra_default_lookbehinds)
     for sch in structural_chunks:
         result_chunks.extend(split_by_pattern(sch, pattern))
 
-    # 3. triggerがある場合は分割、ない場合はそのまま
+    # 3. trigger がある場合は分割、ない場合はそのまま
     trigger_chunks: list[str] = []
     if trigger is not None:
         trigger_pattern = re.compile(trigger)
@@ -72,7 +98,8 @@ def split_tu(
     # 4. 各チャンクから新 TU を再構築
     parts: list[TU] = []
     for idx, chunk in enumerate(trigger_chunks):
-        assert tu.context_id is not None, 'Original TU must have context_id.'
+        if tu.context_id is None:
+            raise ValueError('Original TU must have context_id.')
         new_tu = reconstruct_tu_from_chunk(tu, chunk, tu.context_id, is_first=(idx == 0))
         parts.append(new_tu)
 
@@ -165,20 +192,41 @@ def normalize_flatten(flat: str) -> str:
     return ''.join(out_parts)
 
 
-def split_by_structural_tags(flat: str, inline_tags: list[InlineTag]) -> list[str]:
+def split_by_structural_tags(
+    flat: str,
+    inline_tags: list[InlineTag],
+    extra_raw_inner_patterns: list[str] | None = None,
+) -> list[str]:
     """Split `flat` at structural (newline/br) tag tokens.
 
-    Check the specified `inline_tags` for tag IDs whose
-    `raw_inner` contains newlines or `<br>` equivalents, and split at those token positions.
+    Inspects the given `inline_tags` to detect tag IDs whose `raw_inner`
+    contains a newline or something equivalent to `<br>`, and splits at
+    those token positions.
+
+    Parameters
+    ----------
+    extra_raw_inner_patterns : list[str] | None
+        Additional structural-tag detection patterns (regex strings).
+        Any tag whose `raw_inner` matches one of these patterns is treated
+        as a structural tag.
     """
     # special tag ids
-    special_ids = {
-        t.tag_id for t in (inline_tags or [])
-        if
-        (t.tag == 'x') or
-        (t.raw_inner and (
-            '\n' in t.raw_inner or '&lt;br' in t.raw_inner.lower()))
-        and t.tag_id is not None}
+    special_ids: set[str] = set()
+    for t in (inline_tags or []):
+        if t.tag_id is None:
+            continue
+        ri = t.raw_inner or ''
+        is_structural = (
+            (t.tag == 'x') or
+            '\n' in ri or                      # 実際の改行文字
+            '\\n' in ri or                     # literal \n (NewLine タグの wb:description)
+            '&lt;br' in ri.lower() or          # <br> タグ
+            (extra_raw_inner_patterns and any(
+                re.search(p, ri) for p in extra_raw_inner_patterns
+            ))
+        )
+        if is_structural:
+            special_ids.add(t.tag_id)
     if not special_ids:
         return [flat]
 
@@ -340,6 +388,11 @@ def reconstruct_tu_from_chunk(
         source=new_source,
         target=new_target,
         context_id=parent_context_id,
+        is_locked=original.is_locked,
+        state=original.state,
+        comment=original.comment,
+        order=original.order,
+        extra_attrs=original.extra_attrs,
         raw_xml=original.raw_xml,
     )
     return new_tu
@@ -371,8 +424,10 @@ def split_document(
         trigger: Pattern[str] | str | None = None,
         split_locked_segments: bool = False,
         split_policy: dict[str, bool] | None = None,
+        extra_structural_patterns: list[str] | None = None,
+        extra_default_lookbehinds: list[str] | None = None,
     ) -> XliffDocument:
-    """Return a new XliffDocument with `tus` split by sentence.
+    r"""Return a new XliffDocument with `tus` split by sentence.
 
     Parameters
     ----------
@@ -387,6 +442,14 @@ def split_document(
     split_policy : dict[str, bool] | None, optional
         A mapping from `tu_id` to a boolean indicating whether to split
         that TU. If None, all TUs are split. By default None.
+    extra_structural_patterns : list[str] | None, optional
+        Additional structural-tag detection patterns (regex strings). Any tag
+        whose `raw_inner` matches one of these patterns is treated as a
+        structural tag. By default None.
+    extra_default_lookbehinds : list[str] | None, optional
+        A list of negative-lookbehind strings to add to the default period
+        split trigger. E.g. passing ['Min', 'Max'] results in
+        ``(?<!Min)(?<!Max)\\.\\s+`` being used. By default None.
     """
     # 新規context_id 発行の要否を判定
     if is_to_release_new_context_id(doc.tus):
@@ -395,8 +458,7 @@ def split_document(
     # split_locked_segments が False の場合は、
     # locked な TU を split_policy に従って分割しないようにする
     if not split_locked_segments:
-        if split_policy is None:
-            split_policy = {}
+        split_policy = dict(split_policy or {})
         for tu in doc.tus:
             if tu.is_locked:
                 split_policy[tu.tu_id] = False
@@ -409,7 +471,12 @@ def split_document(
             if not do_split:
                 new_tus.append(tu)
                 continue
-        parts = split_tu(tu, trigger=trigger)
+        parts = split_tu(
+            tu,
+            trigger=trigger,
+            extra_structural_patterns=extra_structural_patterns,
+            extra_default_lookbehinds=extra_default_lookbehinds,
+        )
         new_tus.extend(parts)
 
     # 新規docを作成

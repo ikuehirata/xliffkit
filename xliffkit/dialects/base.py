@@ -96,12 +96,14 @@ class Dialect:
             return cast(State, raw_state)
         return 'new'
 
-    def get_context_id(self, elem: etree.Element) -> str | None:
-        """Get the context_id from the context_xml element."""
-        # context-group を探す
+    def get_context_id(self, elem: etree.Element | None) -> str | None:
+        """Get context_id from a context-group element."""
+        if elem is None:
+            return None
         for child in elem:
-            if 'context-group' in child.tag:
-                return child
+            tag = etree.QName(child).localname
+            if tag == 'context':
+                return child.text
         return None
 
     def is_locked(self, elem: etree.Element) -> bool:

@@ -13,14 +13,43 @@ TOKEN_OPEN = '\uE000'
 TOKEN_CLOSE = '\uE001'
 
 
+def _build_pair_position_map(
+    tags: list[InlineTag],
+) -> dict[str | None, tuple[int, int]]:
+    """Build a tag_id -> (bpt_position, ept_position) map for bpt-ept pairs.
+
+    Only pairs with tag_rid set are included. Used for sorting same-position
+    tags into correct nesting order.
+    """
+    rid_to_bpt: dict[str, InlineTag] = {}
+    pair_map: dict[str | None, tuple[int, int]] = {}
+
+    for tag in tags:
+        if tag.tag == 'bpt' and tag.tag_rid is not None:
+            rid_to_bpt[tag.tag_rid] = tag
+
+    for tag in tags:
+        if tag.tag == 'ept' and tag.tag_rid is not None:
+            bpt = rid_to_bpt.get(tag.tag_rid)
+            if bpt is not None:
+                pair_map[bpt.tag_id] = (bpt.position, tag.position)
+                pair_map[tag.tag_id] = (bpt.position, tag.position)
+
+    return pair_map
+
+
 def flatten_segment(
     seg: Segment, inline_tags: list[InlineTag] | None = None) -> str:
     """Tokenize inline tags in `source`/`target` and return an intermediate representation.
 
-    Implementation notes:
-    - Process tags in the order of `source/target.inline_tags` (or by
-        `position`).
-    - Replace each tag's XML with `token = TOKEN_OPEN + id + TOKEN_CLOSE`.
+    Implementation approach:
+    - Process tags in the order of `source/target.inline_tags` (i.e. by position).
+    - Replace each tag's xml with `token = TOKEN_OPEN + id + TOKEN_CLOSE`.
+    - Insert tags in descending order of position (right to left).
+    - When multiple tags share the same position, preserve nesting structure:
+        - bpt: insert the inner one (smaller ept_pos) first -> ends up further right
+        - ept: insert the outer one (smaller bpt_pos) first -> ends up further right
+      This guarantees correct nesting order such as <a><b>...</b></a>.
 
     Parameters
     ----------
@@ -31,25 +60,52 @@ def flatten_segment(
 
     Notes
     -----
-    - Uses `InlineTag.tag_id`.
-    - Does not attempt to extract fragments from the original text or
-        re-parse XML; it relies on information provided by the parser.
+    - Uses InlineTag.tag_id
+    - Does not extract fragments from the original text corresponding to tags,
+      nor re-parse XML. Uses the information provided by the parser as-is.
+    - Assumes tag_rid has been set by normalize_tags_in_segment.
+      If unset, nesting order is not guaranteed (falls back to tag_id).
     """
     if inline_tags is None:
         inline_tags = seg.inline_tags
 
-    # ソート: tag_id を優先して安定化
-    indexed: list[tuple[int | None, int, InlineTag]] = []
-    for t in inline_tags:
-        indexed.append((int(t.tag_id), t.position, t))
-    indexed.sort(key=lambda x: (x[0], x[1], x[2]), reverse=True)
+    pair_map = _build_pair_position_map(inline_tags)
+
+    def _sort_key(idx_tag: tuple[int, InlineTag]) -> tuple:
+        """A 3-tier key: descending by position, then by nesting order for ties.
+
+        With descending sort (reverse=True), tags "processed earlier" end up
+        inserted further to the right.
+
+        tiebreak1 (pair position):
+          - bpt: process the inner one (smaller ept_pos) first -> -(ept_pos) is larger (less negative)
+          - ept: process the outer one (smaller bpt_pos) first -> -(bpt_pos) is larger (less negative)
+
+        tiebreak2 (index in the original list):
+          Resolves the case where ept_pos / bpt_pos are equal due to full nesting.
+          Tags that appear later (index, i.e. inner) in the XML are processed first -> end up right.
+          Tags that appear earlier (outer) are processed later -> end up left (= ultimately outer).
+        """
+        idx, tag = idx_tag
+        pair = pair_map.get(tag.tag_id)
+        pos = tag.position
+        if tag.tag == 'bpt':
+            tiebreak1 = -(pair[1] if pair is not None else 0)
+        elif tag.tag == 'ept':
+            tiebreak1 = -(pair[0] if pair is not None else 0)
+        else:
+            tiebreak1 = 0
+        return (pos, tiebreak1, idx)
+
+    sorted_tags = sorted(enumerate(inline_tags), key=_sort_key, reverse=True)
 
     flat_text = seg.text
 
-    for _, _, tag in indexed:
+    for _, tag in sorted_tags:
         # determine token id: InlineTag.tag_id
         # 位置に挿入していく。flat_textにタグは含まれないため、置換はしない。
-        token = f'{TOKEN_OPEN}{tag.tag_id}{TOKEN_CLOSE}'
+        tag_id_str = tag.tag_id if tag.tag_id is not None else f'pos{tag.position}'
+        token = f'{TOKEN_OPEN}{tag_id_str}{TOKEN_CLOSE}'
         flat_text = flat_text[:tag.position] + token + flat_text[tag.position:]
 
     return flat_text

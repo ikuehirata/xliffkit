@@ -1,6 +1,8 @@
-"""xliff ファイルから <trans-unit> を抽出し、実務向けに簡略化した YAML を出力する。
+"""Extract <trans-unit> elements from an xliff file and export them as
+a simplified YAML for practical use.
 
-このモジュールは内部パーサー（`xliffkit.core.parser`）を用いて変換を行う。
+This module performs the conversion using the internal parser
+(`xliffkit.core.parser`).
 """
 
 from __future__ import annotations
@@ -8,18 +10,18 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-import yaml
-
 from ..core.internal import xml_parser as core_parser
 from ..dialects.mqxliff import MQXLIFF
 from .stream import iter_tus
 
 
 def export_yaml(file_path: str, dialect: MQXLIFF) -> str:
-    """yaml ファイルとして出力する。
+    """Export as a yaml file.
 
-    ファイル名は入力の basename を .yaml にしたものを `txt/mqxliff_yaml/` に出力する。
+    Writes to `txt/mqxliff_yaml/` using the input's basename with a .yaml extension.
     """
+    import yaml
+
     input_path = Path(file_path)
 
     # 拡張子を確認

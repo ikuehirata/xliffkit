@@ -3,6 +3,7 @@ tests
 README_dev.md
 xliffkit/io/yaml*
 TODO.md
+TODO.yaml
 docs/_notes
 scripts
 .github

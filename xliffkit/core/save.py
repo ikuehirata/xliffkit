@@ -29,7 +29,7 @@ def save(doc: XliffDocument, out_path: Union[str, Path]) -> None:
         return
 
     if suffix in {'.xliff', '.xlf'}:
-        if doc.dialect is not None and doc.dialect is MQXLIFF:
+        if doc.dialect is not None and isinstance(doc.dialect, MQXLIFF):
             raise ValueError(
                 f'Cannot write plain XLIFF from doc.dialect={doc.dialect!r}'
             )

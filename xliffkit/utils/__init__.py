@@ -1,6 +1,7 @@
 """xliffkit.utils
 
-汎用ユーティリティ群。現在は正規表現ヘルパーや警告ユーティリティを含む。
+A collection of general-purpose utilities. Currently includes regex
+helpers and warning utilities.
 """
 
 from __future__ import annotations

@@ -7,24 +7,46 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from typing import TYPE_CHECKING, Any, Literal, get_args
 
 import lxml.etree as etree
 
+if TYPE_CHECKING:
+    from ..dialects.base import Dialect
+
+
+def _default_dialect() -> 'Dialect':
+    from ..dialects.base import Dialect as _D
+    return _D()
+
 State = Literal[
     'new',
+    'needs-translation',
+    'needs-l10n',
+    'needs-adaptation',
     'needs-review-translation',
+    'needs-review-l10n',
+    'needs-review-adaptation',
     'translated',
+    'signed-off',
     'final',
 ]
+'''Translation progress state of a TU (the XLIFF trans-unit's state attribute).
+As defined by the [XLIFF version 1.2 official spec](https://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html):
 
-_ALLOWED_STATES: set[str] = {
-    'new',
-    'needs-review-translation',
-    'translated',
-    'final',
-}
+- 'new': The item is new. It did not exist in a previous version of the document.
+- 'needs-translation': The text needs to be translated.
+- 'needs-l10n': Both text and non-textual information need adaptation.
+- 'needs-adaptation': Only non-textual information needs adaptation.
+- 'needs-review-translation': The text needs review.
+- 'needs-review-l10n': Both text and non-textual information need review.
+- 'needs-review-adaptation': Only non-textual information needs review.
+- 'translated': The item has been translated.
+- 'signed-off': Changes have been reviewed and approved.
+- 'final': End state (quality check complete).
+'''
 
+_ALLOWED_STATES: set[str] = set(get_args(State))
 
 @dataclass
 class InlineTag:
@@ -97,7 +119,11 @@ class Segment:
         return not self.text.strip()
 
     def with_text(self, text: str) -> Segment:
-        """Return a new Segment with `text` replaced."""
+        """Return a new Segment with `text` replaced.
+
+        Side effect: the pre-replacement `text` is set as the new Segment's
+        `flattened_text`. Note that this is asymmetric with `with_flattened_text`.
+        """
         return Segment(
             text=text,
             inline_tags=self.inline_tags,
@@ -205,8 +231,7 @@ class XliffDocument:
 
     tus: list[TU]
 
-    from ..dialects.base import Dialect
-    dialect: Dialect = field(default_factory=Dialect)
+    dialect: Dialect = field(default_factory=_default_dialect)
     '''Dialect information for this document'''
 
     source_lang: str | None = None
@@ -234,7 +259,11 @@ class XliffDocument:
         )
 
     def reorder_tu_id(self) -> XliffDocument:
-        """Return a new XliffDocument with `tu_id` reassigned in appearance order."""
+        """Return a new XliffDocument with `tu_id` renumbered in order of appearance.
+
+        **Destructive operation**: the returned value and the original doc share
+        TU instances, and `tu_id` is written directly into the original TU instances.
+        """
         new_tus = []
         for index, tu in enumerate(self.tus, start=1):
             tu.tu_id = str(index)

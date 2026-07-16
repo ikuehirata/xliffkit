@@ -30,17 +30,21 @@ def _tag_renderer_for_tmx(tag: InlineTag) -> str:
     if tag is None:
         return ''
 
+    # ph で末尾に " /&gt;" が入らないタグは開き/閉じタグ → it として描画 (元オブジェクトは変更しない)
+    effective_tag = tag.tag
+    if tag.raw_inner and tag.tag == 'ph' and not tag.raw_inner.endswith(' /&gt;'):
+        effective_tag = 'it'
+
     attrs = []
     # x タグの場合は <ph type='fmt'>{}</ph> に
-    if tag.tag == 'x':
+    if effective_tag == 'x':
         return "<ph type='fmt'>{}</ph>"
     # it の場合は pos="begin" / "end" を付与する
-    if tag.tag == 'it':
+    if effective_tag == 'it':
         if tag.raw_inner and tag.raw_inner.startswith('&lt;/'):
             attrs.append('pos="end"')
         else:
             attrs.append('pos="begin"')
-    # tag_idは無視する
     # tag_id を i として追加する
     if tag.tag_rid:
         attrs.append(f"i='{tag.tag_rid}'")
@@ -49,7 +53,7 @@ def _tag_renderer_for_tmx(tag: InlineTag) -> str:
     inner = tag.raw_inner or ''
     # TMX 用にエスケープ
     inner = inner.replace('<', '&lt;').replace('>', '&gt;')
-    return f'<{tag.tag}{attr_text}>{inner}</{tag.tag}>'
+    return f'<{effective_tag}{attr_text}>{inner}</{effective_tag}>'
 
 
 def make_tuv_from_seg(seg: Segment) -> etree.SubElement:
@@ -65,16 +69,13 @@ def make_tuv_from_seg(seg: Segment) -> etree.SubElement:
     etree.SubElement
         Created 'tuv' element.
     """
-    # seg.inline_tags を整理する
-    for t in seg.inline_tags:
-        # ph で末尾に " /&gt;" が入らないタグは、開きタグまたは閉じタグ、ペア無し。
-        # そういうのは <it pos="...">としてレンダリングする
-        # （pos="begin" / "end" はレンダリング時に付与される想定）
-        if t.raw_inner and t.tag == 'ph' and not t.raw_inner.endswith(' /&gt;'):
-            t.tag = 'it'
-
     # tuv を作成
     elem = etree.Element('tuv')
+    if seg.lang is None:
+        raise ValueError(
+            'Segment.lang is None — cannot write TMX tuv without xml:lang. '
+            'Ensure source-language and target-language are set in the XLIFF file element.'
+        )
     elem.set('{http://www.w3.org/XML/1998/namespace}lang', seg.lang)
     seg_elem = etree.SubElement(elem, 'seg')
 
@@ -134,8 +135,7 @@ def convert_tu_to_element(
             return default
 
     # 判定: locked 属性
-    locked = org_tu.extra_attrs['locked'] if 'locked' in org_tu.extra_attrs else False
-    if locked and not include_locked:
+    if org_tu.is_locked and not include_locked:
         return None
 
     changedate = get_attr(org_tu.extra_attrs, '{MQXliff}lastchangedtimestamp', '')
@@ -328,7 +328,7 @@ def iter_tu_elements(
     Parameters
     ----------
     doc : XliffDocument
-        変換対象の XliffDocument。
+        The XliffDocument to convert.
     include_locked : bool, optional
         If True, include locked TUs (default False).
     batch_size : int | None, optional

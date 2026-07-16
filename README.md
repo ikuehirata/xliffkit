@@ -47,12 +47,23 @@ xliffkit/
 
 ## Main Features
 
-See the [examples](xliffkit/docs/examples.md) for usage.
+See the [examples](docs/examples.md) for usage.
 
 ### 1. Tag normalization
 
 * Fix low-visibility inline tags into consistent structures (for example, converting `ph`-wrapped `b`/`i` back into `bpt`/`ept`).
 * The aim is structural normalization without changing the semantic content.
+
+<div style="display:flex; gap:1rem; align-items:flex-start;">
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">Before</b>
+  <img src="docs/images/01_fix_before.png" alt="01-before" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">After</b>
+  <img src="docs/images/01_fix_after.png" alt="01-after" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+</div>
 
 ### 2. Segment splitting
 
@@ -60,10 +71,32 @@ See the [examples](xliffkit/docs/examples.md) for usage.
 * Splitting rules can be provided externally (dictionary/YAML).
 * Splitting does not perform automatic merging.
 
+<div style="display:flex; gap:1rem; align-items:flex-start;">
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">Before</b>
+  <img src="docs/images/02_split_before.png" alt="02-before" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">After</b>
+  <img src="docs/images/02_split_after.png" alt="02-after" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+</div>
+
 ### 3. Segment merging
 
 * Merge split segments using strategy-driven rules.
 * Splitting and merging are always separate operations.
+
+<div style="display:flex; gap:1rem; align-items:flex-start;">
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">Before</b>
+  <img src="docs/images/03_merge_before.png" alt="03-before" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">After</b>
+  <img src="docs/images/03_merge_after.png" alt="03-after" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+</div>
 
 ## Out of Scope
 

@@ -1,5 +1,6 @@
-"""xliff file loader that reads, fixes, normalizes, and returns an XliffDocument."""
-from ..core.models import XliffDocument
+"""Load an XLIFF file, apply fixes and normalization, and return it as an XliffDocument."""
+from models import XliffDocument
+
 from ..dialects import detect
 from ..normalize import flatten, tags
 from .internal.xml_parser import parse_xliff

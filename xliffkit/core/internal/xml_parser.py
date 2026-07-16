@@ -99,40 +99,45 @@ def _parse_segment(elem: etree.Element | None, lang: str | None = None) -> Segme
         return Segment(text='', lang=lang)
 
     pure_texts: list[str] = []  # 平文化テキスト断片
-    raw_texts: list[str] = []  # rawテキスト断片 タグを含む
     inline_tags: list[InlineTag] = []
 
     # source.text
     if elem.text:
         pure_texts.append(elem.text)
-        raw_texts.append(elem.text)
 
     # 子要素を順に処理: elem.text の蓄積長を position として渡す
     for child in elem:
         pos = len(''.join(pure_texts))
         child_tag = _strip_ns(child.tag)
-        if child_tag == 'mrk':  # TODO これはmemoQ依存の名前 コメントがついてるところを削除した
-            # <mrk> は無視して内部テキストのみ取り込む
-            inner_text = ''.join(child.itertext()).strip()
-            if inner_text:
-                pure_texts.append(inner_text)
-                raw_texts.append(inner_text)
+        if child_tag == 'mrk':
+            # mrk は透明なコンテナとして処理する: テキストとインラインタグを直接の子と同様に扱う
+            if child.text:
+                pure_texts.append(child.text)
+            for mrk_child in child:
+                mrk_pos = len(''.join(pure_texts))
+                mrk_tag, _ = parse_inline_tag(mrk_child, position=mrk_pos)
+                inline_tags.append(mrk_tag)
+                if mrk_child.tail:
+                    pure_texts.append(mrk_child.tail)
         else:
             tag, raw_xml = parse_inline_tag(child, position=pos)
             inline_tags.append(tag)
-            raw_texts.append(raw_xml)
 
         # child.tail = タグ直後のテキスト
         if child.tail:
             pure_texts.append(child.tail)
-            raw_texts.append(child.tail)
 
-    pure_text = ''.join(pure_texts).strip()
-    raw_text = ''.join(raw_texts).strip()
+    joined = ''.join(pure_texts)
+    stripped = joined.lstrip()
+    offset = len(joined) - len(stripped)
+    pure_text = stripped.rstrip()
+    if offset:
+        for t in inline_tags:
+            t.position = max(0, t.position - offset)
 
     return Segment(
         text=pure_text,
-        tmx_text=raw_text,
+        tmx_text=etree.tostring(elem, encoding='unicode', with_tail=False),
         inline_tags=inline_tags,
         lang=lang,
         raw_xml=elem,

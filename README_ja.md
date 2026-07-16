@@ -50,7 +50,7 @@ xliffkit/
 
 ## 主な機能
 
-以下機能の詳細は [examples](xliffkit/docs/examples.md) にて。
+以下機能の詳細は [examples](docs/examples.md) にて。
 
 ### 1. タグ正規化
 
@@ -60,16 +60,49 @@ xliffkit/
 
 * 意味は変えず、構造だけを整える
 
+<div style="display:flex; gap:1rem; align-items:flex-start;">
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">Before</b>
+  <img src="docs/images/01_fix_before.png" alt="01-before" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">After</b>
+  <img src="docs/images/01_fix_after.png" alt="01-after" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+</div>
+
 ### 2. セグメント分割
 
 * 正規表現ベースで不適切なセグメントを分割
 * 分割ルールは外部（dict / yaml）から与える
 * 分割のみを行い、統合は考えない
 
+<div style="display:flex; gap:1rem; align-items:flex-start;">
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">Before</b>
+  <img src="docs/images/02_split_before.png" alt="02-before" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">After</b>
+  <img src="docs/images/02_split_after.png" alt="02-after" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+</div>
+
 ### 3. セグメント再統合
 
 * 分割されたセグメントを戦略ベースで再統合
 * split と merge は必ず別処理として扱う
+
+<div style="display:flex; gap:1rem; align-items:flex-start;">
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">Before</b>
+  <img src="docs/images/03_merge_before.png" alt="03-before" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
+  <b style="margin:0; padding:0; align-self:center;">After</b>
+  <img src="docs/images/03_merge_after.png" alt="03-after" style="max-width:100%; width:540px; display:block; margin:0; vertical-align:top;" />
+  </div>
+</div>
 
 ## やらないこと
 

@@ -1,6 +1,7 @@
 """Detect dialect from filename."""
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Type
 
 from .base import Dialect
@@ -21,7 +22,7 @@ def detect_dialect_from_filename(
         'generic': GenericXLIFF,
     }
 
-    lowered = filename.lower()
+    lowered = Path(filename).name.lower()
     for name, dialect_cls in dialect_map.items():
         if name in lowered:
             return dialect_cls(roundtrip=roundtrip)

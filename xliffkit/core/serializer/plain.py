@@ -82,7 +82,7 @@ def _render_segment(
 
     # Sort tags by position (ascending). If positions tie, fall back to tag_id
     # for deterministic ordering.
-    sorted_tags = sorted(tags, key=lambda t: (t.position, int(t.tag_id)))
+    sorted_tags = sorted(tags, key=lambda t: (t.position, int(t.tag_id) if t.tag_id is not None else 0))
 
     parts: list[str] = []
     prev = 0
@@ -116,10 +116,13 @@ def serialize(xdoc: XliffDocument, out_path: str | Path) -> None:
     # declare xliffkit prefix so attributes like xliffkit:origin-tu-id are valid XML
     lines.append('<xliff version="1.2" xmlns:xliffkit="urn:xliffkit">')
 
-    # file-level attributes
-    assert xdoc.raw_xml is not None, 'XliffDocument.raw_xml is required for serialization'
-    # raw_xml をそのまま使う
-
+    src = _escape_attr(xdoc.source_lang or '')
+    tgt = _escape_attr(xdoc.target_lang or '')
+    orig = _escape_attr(xdoc.document_name or '')
+    lines.append(
+        f'<file original="{orig}" source-language="{src}"'
+        f' target-language="{tgt}" datatype="plaintext">'
+    )
     lines.append('  <body>')
 
     # sort TU: use TU.order if set, otherwise keep original order
@@ -127,7 +130,7 @@ def serialize(xdoc: XliffDocument, out_path: str | Path) -> None:
 
     def _key(item):
         idx, tu = item
-        return tu.order if getattr(tu, 'order', -1) and tu.order >= 0 else idx
+        return tu.order if tu.order >= 0 else idx
 
     for _, tu in sorted(indexed, key=_key):
         attrs = [f'id="{_escape_attr(tu.tu_id)}"']
@@ -141,7 +144,7 @@ def serialize(xdoc: XliffDocument, out_path: str | Path) -> None:
         if tu.comment:
             lines.append('      <note>' + saxutils.escape(tu.comment) + '</note>')
 
-        # # context_xml の書き出し  # TODO
+        # # context_xml の書き出し  # TODO context_xml の書き出し
         # if tu.context_xml:
         #     lines.append('      ' + tu.context_xml.strip())
 

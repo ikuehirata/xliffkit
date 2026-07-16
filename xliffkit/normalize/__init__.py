@@ -8,6 +8,6 @@ and here they are exposed at the module level.
 
 from __future__ import annotations
 
-from . import context_id, flatten, tags, text
+from . import context_id, flatten, qa_errors, tags, text
 
-__all__ = ['context_id', 'tags', 'text', 'flatten']
+__all__ = ['context_id', 'tags', 'text', 'flatten', 'qa_errors']

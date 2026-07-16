@@ -88,7 +88,8 @@ def _merge_segments(segments: list[Segment]) -> Segment:
             merged_tags.append(newt)
 
     # 5. After all TUs processed, call `reconstruct_segment_from_chunk()` with a temporary TU
-    assert base.lang is not None
+    if base.lang is None:
+        raise ValueError('Segment.lang must not be None when merging segments.')
     new_source = reconstruct_segment_from_chunk(
         original_tags=merged_tags,
         original_lang=base.lang,

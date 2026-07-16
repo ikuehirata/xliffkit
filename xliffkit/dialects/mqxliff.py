@@ -1,17 +1,24 @@
 """memoQ XLIFF (mqXLIFF) dialect definition"""
-from typing import cast
+import logging
+from typing import Any, cast
 
 import lxml.etree as etree
 
 from ..core.models import TU
 from .base import Dialect, State
 
+logger = logging.getLogger(__name__)
+
 STATE_MAPPING = {
-    'NotStarted': 'new',
+    'NotStarted': 'needs-translation',
     'Edited': 'needs-review-translation',
-    'PreTranslated': 'translated',
-    'Confirmed': 'final',
-    'ManuallyConfirmed': 'final',
+    'PartiallyEdited': 'needs-review-translation',
+    'MachineTranslated': 'needs-review-translation',
+    'PreTranslated': 'needs-review-translation',
+    'Confirmed': 'translated',  # TODO これって存在する？
+    'ManuallyConfirmed': 'translated',
+    'Reviewer1Confirmed': 'signed-off',
+    'Proofread': 'final',
 }
 
 
@@ -81,7 +88,7 @@ class MQXLIFF(Dialect):
         return metadata
 
 
-    def extend_stream_dict(self, tu: TU) -> dict[str, str]:
+    def extend_stream_dict(self, tu: TU) -> dict[str, Any]:
         """Extend the output dict of iter_tus.
 
         memoQ adds the following:
@@ -97,7 +104,13 @@ class MQXLIFF(Dialect):
         else:
             extra['locked'] = False
 
-        context_id = self.get_context_id(tu.raw_xml)
+        cg = None
+        if tu.raw_xml is not None:
+            for child in tu.raw_xml:
+                if etree.QName(child).localname == 'context-group':
+                    cg = child
+                    break
+        context_id = self.get_context_id(cg)
         if context_id is not None and context_id != '':
             extra['context_id'] = context_id
 
@@ -107,15 +120,17 @@ class MQXLIFF(Dialect):
         """Normalize memoQ-specific state attribute."""
         for k, v in elem.attrib.items():
             if 'status' in k:
-                xliff_state = STATE_MAPPING.get(v, 'new')
+                xliff_state = STATE_MAPPING.get(v, 'needs-translation')
                 return cast(State, xliff_state)
 
-        return 'new'
+        logger.warning(
+            'mqXLIFF: no state attribute found for TU %s.', elem.attrib.get('id'))
+        return 'needs-translation'
 
     def get_context_id(self, elem: etree.Element) -> str | None:
         """Normalize memoQ-specific context attribute."""
         if elem is None:
-            print('elem is None')  # なんか対処が必要
+            # print('elem is None')  # TODO なんか対処が必要
             return None
         for child in elem:
             tag = child.tag

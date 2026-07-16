@@ -4,12 +4,15 @@ This module primarily targets mqxliff. Dialect support may be added
 in the future.
 """
 import html
+import logging
 import re
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, cast
 
 from ..core.models import InlineTag, Segment, XliffDocument
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -23,9 +26,9 @@ class InlineTagToken:
     tag_id : str
         InlineTag.tag_id
     original_tag : str
-        元の InlineTag.tag（ほぼ ph）
-    corrected_tag : Literal['x', 'ph', 'bpt', 'ept']
-        tags corrected to their proper types based on analysis
+        The original InlineTag.tag (almost always ph)
+    corrected_tag : Literal['x', 'ph', 'bpt', 'ept', 'g', 'it']
+        Tag type after normalization
     tag_name : str | None
         e.g. 'style', 'b', 'i', or None
     is_open : bool
@@ -41,14 +44,14 @@ class InlineTagToken:
     idx: int
     tag_id: str | None
     original_tag: str
-    ''''元の InlineTag.tag（ほぼ ph）'''
-    corrected_tag: Literal['x', 'ph', 'bpt', 'ept']
+    '''The original InlineTag.tag (almost always ph)'''
+    corrected_tag: Literal['x', 'ph', 'bpt', 'ept', 'g', 'it']
     tag_name: str | None
-    '''style / b / i / その他'''
+    '''style / b / i / other'''
     is_open: bool
     is_close: bool
     pair_with: int | None = None
-    '''対応するタグの idx'''
+    '''idx of the corresponding tag'''
     rid: str | None = None
 
 
@@ -130,7 +133,11 @@ def build_inline_tag_tokens(
             tag_name = 'x'
             corrected_tag = 'x'
         else:
-            raise ValueError(f'Unexpected tag: {tag.tag}')
+            # g / it などは正規化対象外。そのまま通す。
+            is_open = False
+            is_close = False
+            tag_name = None
+            corrected_tag = cast(Literal['x', 'ph', 'bpt', 'ept', 'g', 'it'], tag.tag)
 
         token = InlineTagToken(
             idx=idx,
@@ -152,7 +159,10 @@ def pair_inline_tag_tokens(
 ) -> None:
     """Scan an InlineTagToken list from the end to fill `pair_with` and set tag types (bpt/ept).
 
-    The `tokens` list is modified in-place.
+    `tokens` is modified in place.
+    A tag is demoted to ph in the following cases:
+    - bpt/ept that failed to pair
+    - Originally bpt/ept but tag_name is 'unknown'
     """
     close_stack: dict[str, list[int]] = defaultdict(list)
 
@@ -183,6 +193,19 @@ def pair_inline_tag_tokens(
                 close_token.corrected_tag = 'ept'
 
             # stack が空 → 相手なし、ph のまま
+
+    # ペアリング後の処理:
+    # 1. ペアが見つからない bpt/ept を ph に降格
+    # 2. ph から昇格した bpt/ept で tag_name が 'unknown' のは ph に降格（不正確なペアリング）
+    #    ただし元から bpt/ept だったタグは降格させない（memoQが正しいと判断済み）
+    for token in tokens:
+        if token.corrected_tag in {'bpt', 'ept'}:
+            if token.pair_with is None:
+                # ペアが見つからない
+                token.corrected_tag = 'ph'
+            elif token.tag_name == 'unknown' and token.original_tag not in {'bpt', 'ept'}:
+                # ph から昇格したが tag_name が解析されていない → 不正確なペアリング → ph に降格
+                token.corrected_tag = 'ph'
 
 
 def dump_tokens(tokens: list[InlineTagToken]) -> None:
@@ -233,8 +256,11 @@ def normalize_mq_rxt_raw_for_tag(
         if _RXT_SELF_CLOSING_RE.search(s):
             return _RXT_SELF_CLOSING_RE.sub(' /&gt;', s)
 
-        # 末尾が "&gt;" なら " /&gt;" に変換
+        # 末尾が "&gt;" なら " /&gt;" に変換（ただし閉じタグは除外）
         if s.endswith('&gt;'):
+            # 閉じタグ（&lt;/で始まるもの）はスペース付き形式に変換しない
+            if s.startswith('&lt;/'):
+                return s
             return s[:-4] + ' /&gt;'
 
         # 末尾が予期しない場合：触らない（安全側）
@@ -252,7 +278,6 @@ def normalize_mq_rxt_raw_for_tag(
         if outer_tag == 'ept' and s.startswith('&lt;mq'):
             s = '&lt;/mq' + s[6:]
 
-        # 末尾が "&gt;" ならOK
         return s
 
     # それ以外は変更しない
@@ -285,13 +310,25 @@ def rebuild_inline_tags(
     for orig, token in zip(original, tokens):
         tag = token.corrected_tag
         rid = token.rid if tag in {'bpt', 'ept'} else None
-        assert orig.tag_id is not None
+        # tag_id が None の場合は警告を出しつつ処理を続行
+        if orig.tag_id is None:
+            logger.warning(
+                "Inline tag id is None for tag '%s' at position %d",
+                orig.tag, orig.position,
+            )
+
+        if tag in {'ph', 'bpt', 'ept'} and orig.raw_inner is not None:
+            raw_inner = normalize_mq_rxt_raw_for_tag(
+                orig.raw_inner, cast(Literal['ph', 'bpt', 'ept'], tag)
+            )
+        else:
+            raw_inner = orig.raw_inner
 
         new_tags.append(
             InlineTag(
                 tag=tag,
                 tag_id=orig.tag_id,
-                raw_inner=orig.raw_inner,
+                raw_inner=raw_inner,
                 tag_rid=rid,
                 position=orig.position,
             )
@@ -319,8 +356,7 @@ def normalize_tags_in_segment(seg: Segment) -> Segment:
     # セグメントの元々の inline tag 列を中間生成物列に変換
     tokens = build_inline_tag_tokens(seg.inline_tags)
     # TODO markdown で ** などの装飾タグに対応するためには、seg を渡して
-    # TODO raw_inner を直接解析する必要がある
-    # TODO ただしそこまでする必要ある？
+    # raw_inner を直接解析する必要がある。ただしそこまでする必要ある？
     # ペアリングを実行
     pair_inline_tag_tokens(tokens)
     # rid を付与
@@ -332,6 +368,9 @@ def normalize_tags_in_segment(seg: Segment) -> Segment:
 
 def normalize_all_tags(doc: XliffDocument) -> XliffDocument:
     """Destructive operation that normalizes all ph/bpt/ept tags in the document.
+
+    **Destructive operation**: the `source` / `target` of each TU instance in `doc.tus` is
+    rewritten in place.
 
     Parameters
     ----------
@@ -349,3 +388,121 @@ def normalize_all_tags(doc: XliffDocument) -> XliffDocument:
             tu.target = normalize_tags_in_segment(tu.target)
 
     return doc.with_tus(doc.tus)
+
+
+def _make_structural_groups(tags: list[InlineTag]) -> list[list[InlineTag]]:
+    """Group tags into structural units (bpt-ept pairs or standalone tags).
+
+    - bpt/ept with tag_rid set are grouped together in pairs sharing the same rid.
+    - Everything else (ph, x, bpt/ept without a rid) is treated as one tag = one group.
+    - Group order follows the order tags appear in the inline_tags list
+      (i.e. position order within the text).
+
+    Assumes normalize_tags_in_segment has already run.
+    """
+    groups: list[list[InlineTag]] = []
+    rid_to_group: dict[str, list[InlineTag]] = {}
+
+    for tag in tags:
+        if tag.tag in ('bpt', 'ept') and tag.tag_rid is not None:
+            rid = tag.tag_rid
+            if rid not in rid_to_group:
+                new_group: list[InlineTag] = []
+                rid_to_group[rid] = new_group
+                groups.append(new_group)
+            rid_to_group[rid].append(tag)
+        else:
+            groups.append([tag])
+
+    return groups
+
+
+def align_target_tag_ids(source: Segment, target: Segment) -> Segment:
+    """Align target's inline tag_ids with source's (source is authoritative).
+
+    Assumes this is called after normalize_tags_in_segment.
+    Matches pair groups by rid in order of appearance, and assigns source's tag_id to target.
+
+    Matching strategy:
+    - source's (bpt, rid=1) <-> target's (bpt, rid=1) ... matched by rid order
+    - standalone ph/x ... matched by order of appearance
+
+    Notes:
+    - If the group counts don't match, log a warning and return as-is
+    - flattened_text becomes invalid after conversion (caller must re-run flatten_segment)
+
+    Parameters
+    ----------
+    source : Segment
+        The source segment to treat as authoritative (has correct tag_ids)
+    target : Segment
+        The target segment whose tag_ids should be aligned with source
+
+    Returns
+    -------
+    Segment
+        A new target with tag_ids matched to source. flattened_text is reset to None.
+    """
+    source_tags = source.inline_tags or []
+    target_tags = target.inline_tags or []
+
+    if not source_tags or not target_tags:
+        return target
+
+    src_groups = _make_structural_groups(source_tags)
+    tgt_groups = _make_structural_groups(target_tags)
+
+    if len(src_groups) != len(tgt_groups):
+        logger.warning(
+            'align_target_tag_ids: source has %d groups / target has %d groups'
+            ' — skipping alignment',
+            len(src_groups), len(tgt_groups),
+        )
+        return target
+
+    # old target tag_id -> new (source) tag_id
+    id_remap: dict[str, str] = {}
+
+    for src_grp, tgt_grp in zip(src_groups, tgt_groups):
+        if len(src_grp) != len(tgt_grp):
+            logger.warning(
+                'align_target_tag_ids: group size mismatch (src=%d, tgt=%d)'
+                ' — skipping this group',
+                len(src_grp), len(tgt_grp),
+            )
+            continue
+
+        # 同一タグ種別どうしをマッチ (bpt↔bpt, ept↔ept, ph↔ph, x↔x)
+        src_by_type: dict[str, list[InlineTag]] = {}
+        for t in src_grp:
+            src_by_type.setdefault(t.tag, []).append(t)
+
+        tgt_by_type: dict[str, list[InlineTag]] = {}
+        for t in tgt_grp:
+            tgt_by_type.setdefault(t.tag, []).append(t)
+
+        for tag_type, src_list in src_by_type.items():
+            tgt_list = tgt_by_type.get(tag_type, [])
+            for src_t, tgt_t in zip(src_list, tgt_list):
+                id_remap[tgt_t.tag_id] = src_t.tag_id
+
+    new_tags = [
+        InlineTag(
+            tag=t.tag,
+            tag_id=id_remap.get(t.tag_id, t.tag_id),
+            tag_rid=t.tag_rid,
+            raw_inner=t.raw_inner,
+            position=t.position,
+        )
+        for t in target_tags
+    ]
+
+    # tag_id が変わるので flattened_text は無効化する
+    return Segment(
+        text=target.text,
+        inline_tags=new_tags,
+        flattened_text=None,
+        tmx_text=target.tmx_text,
+        lang=target.lang,
+        raw_xml=target.raw_xml,
+    )
